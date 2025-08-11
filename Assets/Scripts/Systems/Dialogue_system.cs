@@ -10,6 +10,7 @@ public class Dialogue_system : MonoBehaviour
     public TextMeshProUGUI text_component;
     private Transform camtarget;
     public string[] lines;
+    public GameObject[] portraits;
     public float speed;
     public float speed_pause;
     public int index;
@@ -57,12 +58,17 @@ public class Dialogue_system : MonoBehaviour
     void NextLine()
     {
 
-
         cursor.SetActive(false);
 
         if (index < lines.Length - 1)
         {
             index++;
+            if (index > 0)
+            {
+                portraits[index - 1].SetActive(false);
+            }
+            portraits[index].SetActive(true);
+
             text_component.text = string.Empty;
             StartCoroutine(typeline());
         }

@@ -36,7 +36,9 @@ public class SC_NPC : MonoBehaviour
 
     void Start_dialogue()
     {
-        player.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
+        player.rb.linearVelocity = Vector2.zero;
+        player.animator.SetTrigger("Idle");
+        player.footstep.Stop();
         player.Hide_arrow();
         GameObject I_dialogue;
         I_dialogue = Instantiate(dialogue);

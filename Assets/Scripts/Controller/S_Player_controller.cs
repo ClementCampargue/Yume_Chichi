@@ -6,7 +6,7 @@ public class S_Player_controller : MonoBehaviour
     public bool can_act;
     public float Move_speed;
     public Animator animator;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
 
     public AudioSource footstep;
 
