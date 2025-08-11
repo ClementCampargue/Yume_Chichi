@@ -3,36 +3,37 @@ using UnityEngine;
 
 public class S_Player_controller : MonoBehaviour
 {
+    public bool can_act;
     public float Move_speed;
     public Animator animator;
-    private Rigidbody rb;
+    private Rigidbody2D rb;
 
     public AudioSource footstep;
 
     private bool facing_right;
-    public int velocity_to_anim;
+
+    public GameObject arrow;
     void Start()
     {
+        can_act = true;
         facing_right = true;
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        chack_movement();
-  
-
-
-
-
-        rb.linearVelocity = new Vector2(Input.GetAxis("Horizontal") * Move_speed, Input.GetAxis("Vertical") * Move_speed);
+        if (can_act)
+        {
+            check_movement();
+            rb.linearVelocity = new Vector2(Input.GetAxis("Horizontal") * Move_speed, Input.GetAxis("Vertical") * Move_speed);
+        }
     }
 
-    private void chack_movement()
+    private void check_movement()
     {
 
-        if (rb.linearVelocity != Vector3.zero)
+        if (rb.linearVelocity != Vector2.zero)
         {
             if (!footstep.isPlaying)
             {
@@ -40,7 +41,7 @@ public class S_Player_controller : MonoBehaviour
             }
 
 
-            if (rb.linearVelocity.x < velocity_to_anim && rb.linearVelocity.x > -velocity_to_anim && rb.linearVelocity.y > 0)
+            if (Mathf.Abs(rb.linearVelocity.x) < Mathf.Abs(rb.linearVelocity.y) && rb.linearVelocity.y > 0)
             {
                 animator.SetBool("Up", true);
                 animator.SetBool("Side", false);
@@ -53,7 +54,7 @@ public class S_Player_controller : MonoBehaviour
 
 
             }
-            else if (rb.linearVelocity.y < velocity_to_anim && rb.linearVelocity.y > -velocity_to_anim && rb.linearVelocity.x > 0)
+            else if (Mathf.Abs(rb.linearVelocity.x) > Mathf.Abs(rb.linearVelocity.y) && rb.linearVelocity.x > 0)
             {
                 animator.SetBool("Side", true);
                 animator.SetBool("Down", false);
@@ -65,7 +66,7 @@ public class S_Player_controller : MonoBehaviour
                     Flip();
                 }
             }
-            else if (rb.linearVelocity.x < velocity_to_anim && rb.linearVelocity.x > -velocity_to_anim && rb.linearVelocity.y < 0)
+            else if (Mathf.Abs(rb.linearVelocity.x) < Mathf.Abs(rb.linearVelocity.y) && rb.linearVelocity.y < 0)
             {
                 animator.SetBool("Down", true);
                 animator.SetBool("Side", false);
@@ -76,7 +77,7 @@ public class S_Player_controller : MonoBehaviour
                     Flip();
                 }
             }
-            else if(rb.linearVelocity.y < velocity_to_anim && rb.linearVelocity.y > -velocity_to_anim && rb.linearVelocity.x < 0)
+            else if(Mathf.Abs(rb.linearVelocity.x) > Mathf.Abs(rb.linearVelocity.y) && rb.linearVelocity.x < 0)
             {
                 animator.SetBool("Side", true);
                 animator.SetBool("Up", false);
@@ -106,6 +107,16 @@ public class S_Player_controller : MonoBehaviour
     private void Flip()
     {
         transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
+    }
+
+    public void Display_arrow()
+    {
+        arrow.SetActive(true);
+    }
+
+    public void Hide_arrow()
+    {
+        arrow.SetActive(false);
     }
 
 }
