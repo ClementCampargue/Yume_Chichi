@@ -31,17 +31,6 @@ public class S_Player_controller : MonoBehaviour
 
     private void chack_movement()
     {
-        if (rb.linearVelocity.x < 0 && facing_right)
-        {
-            facing_right = false;
-            Flip();
-
-        }
-        if (rb.linearVelocity.x > 0 && !facing_right)
-        {
-            facing_right = true;
-            Flip();
-        }
 
         if (rb.linearVelocity != Vector3.zero)
         {
@@ -56,6 +45,12 @@ public class S_Player_controller : MonoBehaviour
                 animator.SetBool("Up", true);
                 animator.SetBool("Side", false);
                 animator.SetBool("Down", false);
+                if (!facing_right)
+                {
+                    facing_right = true;
+                    Flip();
+                }
+
 
             }
             else if (rb.linearVelocity.y < velocity_to_anim && rb.linearVelocity.y > -velocity_to_anim && rb.linearVelocity.x > 0)
@@ -64,13 +59,22 @@ public class S_Player_controller : MonoBehaviour
                 animator.SetBool("Down", false);
                 animator.SetBool("Up", false);
 
+                if (!facing_right)
+                {
+                    facing_right = true;
+                    Flip();
+                }
             }
             else if (rb.linearVelocity.x < velocity_to_anim && rb.linearVelocity.x > -velocity_to_anim && rb.linearVelocity.y < 0)
             {
                 animator.SetBool("Down", true);
                 animator.SetBool("Side", false);
                 animator.SetBool("Up", false);
-
+                if (!facing_right)
+                {
+                    facing_right = true;
+                    Flip();
+                }
             }
             else if(rb.linearVelocity.y < velocity_to_anim && rb.linearVelocity.y > -velocity_to_anim && rb.linearVelocity.x < 0)
             {
@@ -78,6 +82,11 @@ public class S_Player_controller : MonoBehaviour
                 animator.SetBool("Up", false);
                 animator.SetBool("Down", false);
 
+                if (facing_right)
+                {
+                    facing_right = false;
+                    Flip();
+                }
             }
 
             animator.SetTrigger("Moving");
