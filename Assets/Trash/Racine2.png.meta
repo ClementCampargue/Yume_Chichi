@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 63defdbefed2f984b9c43ce819848b3c
+guid: abc95af952a57c34983cb931f53c5198
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8863112667532694526
-    second: Bulle_0
+      213: 891376007722289864
+    second: Racine2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bulle_0
+      name: Racine2_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 421
-        height: 73
+        width: 410
+        height: 217
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 20ce277dcf5eff480800000000000000
-      internalID: -8863112667532694526
+      spriteID: 8cac79d91cdce5c00800000000000000
+      internalID: 891376007722289864
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Bulle_0: -8863112667532694526
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
