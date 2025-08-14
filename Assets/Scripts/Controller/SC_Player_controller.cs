@@ -1,7 +1,8 @@
+using Unity.Cinemachine;
 using UnityEditor.Tilemaps;
 using UnityEngine;
 
-public class S_Player_controller : MonoBehaviour
+public class SC_Player_controller : MonoBehaviour
 {
     public bool can_act;
     public float Move_speed;
@@ -10,14 +11,13 @@ public class S_Player_controller : MonoBehaviour
 
     public AudioSource footstep;
 
-    private bool facing_right;
+    public bool facing_right;
 
     public GameObject arrow;
     void Start()
     {
         can_act = true;
         facing_right = true;
-        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -26,85 +26,93 @@ public class S_Player_controller : MonoBehaviour
         if (can_act)
         {
             check_movement();
-            rb.linearVelocity = new Vector2(Input.GetAxis("Horizontal") * Move_speed, Input.GetAxis("Vertical") * Move_speed);
+            apply_movement();
         }
     }
 
     private void check_movement()
     {
-
+        
         if (rb.linearVelocity != Vector2.zero)
         {
-            if (!footstep.isPlaying)
-            {
-                footstep.Play();
-            }
 
-
-            if (Mathf.Abs(rb.linearVelocity.x) < Mathf.Abs(rb.linearVelocity.y) && rb.linearVelocity.y > 0)
+            if (Input.GetAxis("Vertical") > 0 && Mathf.Abs(Input.GetAxis("Horizontal")) < Mathf.Abs(Input.GetAxis("Vertical")))
             {
-                animator.SetBool("Up", true);
+
+                animator.SetBool("Down", false);
                 animator.SetBool("Side", false);
-                animator.SetBool("Down", false);
-                if (!facing_right)
-                {
-                    facing_right = true;
-                    Flip();
-                }
-
-
-            }
-            else if (Mathf.Abs(rb.linearVelocity.x) > Mathf.Abs(rb.linearVelocity.y) && rb.linearVelocity.x > 0)
-            {
-                animator.SetBool("Side", true);
-                animator.SetBool("Down", false);
-                animator.SetBool("Up", false);
+                animator.SetBool("Up", true);
 
                 if (!facing_right)
                 {
                     facing_right = true;
                     Flip();
                 }
+
             }
-            else if (Mathf.Abs(rb.linearVelocity.x) < Mathf.Abs(rb.linearVelocity.y) && rb.linearVelocity.y < 0)
+            else if (Input.GetAxis("Vertical") < 0 && Mathf.Abs(Input.GetAxis("Horizontal")) < Mathf.Abs(Input.GetAxis("Vertical")))
             {
+
                 animator.SetBool("Down", true);
                 animator.SetBool("Side", false);
                 animator.SetBool("Up", false);
+
                 if (!facing_right)
                 {
                     facing_right = true;
                     Flip();
                 }
+
             }
-            else if(Mathf.Abs(rb.linearVelocity.x) > Mathf.Abs(rb.linearVelocity.y) && rb.linearVelocity.x < 0)
+            else if (Input.GetAxis("Horizontal") > 0 && Mathf.Abs(Input.GetAxis("Vertical")) < Mathf.Abs(Input.GetAxis("Horizontal")))
             {
+
+                animator.SetBool("Down", false);
                 animator.SetBool("Side", true);
                 animator.SetBool("Up", false);
+
+                if (!facing_right)
+                {
+                    facing_right = true;
+                    Flip();
+                }
+
+
+            }
+            else if (Input.GetAxis("Horizontal") < 0 && Mathf.Abs(Input.GetAxis("Vertical")) < Mathf.Abs(Input.GetAxis("Horizontal")))
+            {
+
                 animator.SetBool("Down", false);
+                animator.SetBool("Side", true);
+                animator.SetBool("Up", false);
 
                 if (facing_right)
                 {
                     facing_right = false;
                     Flip();
                 }
+
             }
 
             animator.SetTrigger("Moving");
+            if (!footstep.isPlaying)
+            {
+                footstep.Play();
+            }
 
         }
-        else
+        else if(Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0)
         {
             animator.SetTrigger("Idle");
             footstep.Stop();
         }
-        
-
-
+    }
+    private void apply_movement()
+    {
+        rb.linearVelocity = new Vector2(Input.GetAxis("Horizontal") * Move_speed, Input.GetAxis("Vertical") * Move_speed);
     }
 
-
-    private void Flip()
+    public void Flip()
     {
         transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
     }

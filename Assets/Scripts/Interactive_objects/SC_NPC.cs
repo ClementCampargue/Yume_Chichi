@@ -6,11 +6,12 @@ public class SC_NPC : MonoBehaviour
     public float distance;
 
     private bool can_talk =true;
-    private S_Player_controller player;
+    private SC_Player_controller player;
     public GameObject dialogue;
+
     void Start()
     {
-        player = GameObject.FindWithTag("Player").GetComponent<S_Player_controller>();
+        player = GameObject.FindWithTag("Player").GetComponent<SC_Player_controller>();
     }
 
     // Update is called once per frame
@@ -36,20 +37,72 @@ public class SC_NPC : MonoBehaviour
 
     void Start_dialogue()
     {
+
+        can_talk = false;
         player.rb.linearVelocity = Vector2.zero;
-        player.animator.SetTrigger("Idle");
+        player_anim();
         player.footstep.Stop();
         player.Hide_arrow();
         GameObject I_dialogue;
         I_dialogue = Instantiate(dialogue);
-        I_dialogue.GetComponent<Dialogue_system>().npc = this;
+        I_dialogue.GetComponent<SC_Dialogue_system>().npc = this;
         player.can_act = false;
+    }
+
+    void player_anim()
+    {
+        if (player.transform.position.x > transform.position.x && Mathf.Abs(player.transform.position.x - transform.position.x) > Mathf.Abs(player.transform.position.y - transform.position.y))
+        {
+            player.animator.SetBool("Side", true);
+            player.animator.SetBool("Up", false);
+            player.animator.SetBool("Down", false);
+            player.animator.SetBool("Side", true);
+            if (player.facing_right)
+            {
+                player.facing_right = false;
+                player.Flip();
+            }
+        }
+
+        if (player.transform.position.x < transform.position.x && Mathf.Abs(player.transform.position.x - transform.position.x) > Mathf.Abs(player.transform.position.y - transform.position.y))
+        {
+            player.animator.SetBool("Side", true);
+            player.animator.SetBool("Up", false);
+            player.animator.SetBool("Down", false);
+            if (!player.facing_right)
+            {
+                player.facing_right = true;
+                player.Flip();
+            }
+        }
+
+        if (player.transform.position.y > transform.position.y && Mathf.Abs(player.transform.position.y - transform.position.y) > Mathf.Abs(player.transform.position.x - transform.position.x))
+        {
+            player.animator.SetBool("Side", false);
+            player.animator.SetBool("Up", false);
+            player.animator.SetBool("Down", true);
+        }
+
+        if (player.transform.position.y < transform.position.y && Mathf.Abs(player.transform.position.y - transform.position.y) > Mathf.Abs(player.transform.position.x - transform.position.x))
+        {
+            player.animator.SetBool("Side", false);
+            player.animator.SetBool("Up", true);
+            player.animator.SetBool("Down", false);
+        }
+
+        player.animator.ResetTrigger("Moving");
+        player.animator.SetTrigger("Idle");
+
     }
 
     public void Reset_NPC()
     {
-        can_talk = true;
+        Invoke("Delay_Reset_NPC", 0.5f);
+    }
 
+    public void Delay_Reset_NPC()
+    {
+        can_talk = true;
         player.Display_arrow();
     }
 }

@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
 
-public class Dialogue_system : MonoBehaviour
+public class SC_Dialogue_system : MonoBehaviour
 {
     public SC_NPC npc;
     public TextMeshProUGUI text_component;
@@ -14,7 +14,7 @@ public class Dialogue_system : MonoBehaviour
     public float speed;
     public float speed_pause;
     public int index;
-    private S_Player_controller player;
+    private SC_Player_controller player;
     public Animator anim;
 
     public GameObject cursor;
@@ -23,7 +23,7 @@ public class Dialogue_system : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.Find("Player").GetComponent<S_Player_controller>();
+        player = GameObject.Find("Player").GetComponent<SC_Player_controller>();
         text_component.text = string.Empty;
         camtarget = GameObject.Find("Cam_target").GetComponent<Transform>();
     }
@@ -114,11 +114,12 @@ public class Dialogue_system : MonoBehaviour
     {
         anim.SetTrigger("disable");
         player.can_act = true;
-        npc.Reset_NPC();
+
     }
 
-    public void Destroy()
+    public void Destroy_dialogue()
     {
+        npc.Reset_NPC();
         Destroy(gameObject);
     }
 }
