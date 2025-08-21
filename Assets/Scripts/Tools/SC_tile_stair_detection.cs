@@ -1,21 +1,19 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using UnityEngine.UIElements;
 
-public class SC_tile_detection : MonoBehaviour
+public class SC_tile_stair_detection : MonoBehaviour
 {
 
     public List<Tile> tiles;
-    public AudioSource footsteps;
-    public ParticleSystem FX;
     public List<Tilemap> maps;
 
     public Tile tile;
+    public float speed;
+    private SC_Player_controller player;
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<SC_Player_controller>();
         var myItems = FindObjectsByType<Tilemap>(FindObjectsSortMode.None);
         foreach (Tilemap item in myItems)
         {
@@ -26,16 +24,15 @@ public class SC_tile_detection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < maps.Count; i++) 
+        for (int i = 0; i < maps.Count; i++)
         {
             Vector3Int coordinate = maps[i].WorldToCell(transform.position);
-            if(maps[i].HasTile(coordinate))
+            if (maps[i].HasTile(coordinate))
             {
                 tile = maps[i].GetTile<Tile>(coordinate);
             }
             else
             {
-                Debug.Log("null"); 
                 _out();
                 return;
             }
@@ -44,31 +41,23 @@ public class SC_tile_detection : MonoBehaviour
         if (tiles.Contains(tile))
         {
             _in();
-    
+
         }
         else
         {
-            _out();
-    
+
         }
     }
 
 
     void _in()
     {
-        if (!footsteps.isPlaying)
-        {
-            footsteps.Play();
-        }
-        if (!FX.isPlaying)
-        {
-            FX.Play();
-        }
+        player.stair_speed = speed;
     }
 
     void _out()
     {
-        footsteps.Stop();
-        FX.Stop();
+        player.stair_speed = 0;
+
     }
 }

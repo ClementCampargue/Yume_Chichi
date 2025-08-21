@@ -8,6 +8,7 @@ public class SC_NPC : MonoBehaviour
     private bool can_talk =true;
     private SC_Player_controller player;
     public GameObject dialogue;
+    public SpriteRenderer arrow;
 
     void Start()
     {
@@ -26,12 +27,12 @@ public class SC_NPC : MonoBehaviour
             }
             if (can_talk)
             {
-                player.Display_arrow();
+                arrow.enabled =true;
             }
         }
         else
         {
-            player.Hide_arrow();
+            arrow.enabled = false;
         }
     }
 
@@ -41,8 +42,7 @@ public class SC_NPC : MonoBehaviour
         can_talk = false;
         player.rb.linearVelocity = Vector2.zero;
         player_anim();
-        player.footstep.Stop();
-        player.Hide_arrow();
+        arrow.enabled = false;
         GameObject I_dialogue;
         I_dialogue = Instantiate(dialogue);
         I_dialogue.GetComponent<SC_Dialogue_system>().npc = this;
@@ -103,6 +103,6 @@ public class SC_NPC : MonoBehaviour
     public void Delay_Reset_NPC()
     {
         can_talk = true;
-        player.Display_arrow();
+        arrow.enabled = true;
     }
 }

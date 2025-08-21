@@ -14,6 +14,11 @@ public class SC_Sprite_animator : MonoBehaviour
 
     void Start()
     {
+        if (sprites.Count <= 1) 
+        { 
+            this.enabled = false;
+        }
+
         if (gameObject.GetComponent<Image>()!= null)
         {
             image = gameObject.GetComponent<Image>();
