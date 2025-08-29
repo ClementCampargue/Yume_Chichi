@@ -2,16 +2,25 @@ using UnityEngine;
 
 public class SC_Player_follow : MonoBehaviour
 {
-    private Transform player;
+    public Transform target;
     public Vector2 offset;
-    void Start()
+    public bool Horizontal_follow = true;
+    public bool Vertical_follow = true;
+    void Awake()
     {
-        player = GameObject.FindWithTag("Player").transform;
+        target = GameObject.FindWithTag("Player").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector2(offset.x + player.position.x, offset.y + player.position.y) ;
+        if (Horizontal_follow)
+        {
+            transform.position = new Vector3(offset.x + target.position.x, transform.position.y, transform.position.z);
+        }
+        if (Vertical_follow)
+        {
+            transform.position = new Vector3(transform.position.x, offset.y + target.position.y, transform.position.z);
+        }
     }
 }

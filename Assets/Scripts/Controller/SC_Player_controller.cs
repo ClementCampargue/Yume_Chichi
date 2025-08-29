@@ -119,7 +119,7 @@ public class SC_Player_controller : MonoBehaviour
 
     public void Flip()
     {
-        transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
+        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
     }
 
 

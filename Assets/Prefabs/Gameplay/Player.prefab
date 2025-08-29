@@ -118,6 +118,7 @@ MonoBehaviour:
   animator: {fileID: 4465271794148188828}
   rb: {fileID: 6463558759409803644}
   facing_right: 0
+  stair_speed: 0
 --- !u!50 &6463558759409803644
 Rigidbody2D:
   serializedVersion: 5

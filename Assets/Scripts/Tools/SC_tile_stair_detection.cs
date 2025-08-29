@@ -17,7 +17,10 @@ public class SC_tile_stair_detection : MonoBehaviour
         var myItems = FindObjectsByType<Tilemap>(FindObjectsSortMode.None);
         foreach (Tilemap item in myItems)
         {
-            maps.Add(item);
+            if (item.tag == "Ground")
+            {
+                maps.Add(item);
+            }
         }
     }
 
