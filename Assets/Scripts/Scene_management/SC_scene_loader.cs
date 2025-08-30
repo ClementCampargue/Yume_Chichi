@@ -7,6 +7,7 @@ public class SC_scene_loader : MonoBehaviour
     public Transform spawn_point;
     [HideInInspector] public string current_scene;
     public SC_Color_anim fade;
+    public GameObject fade_obj;
     void Start()
     {
         if(GameObject.Find("GAME_MASTER").GetComponent<SC_game_master>().previous_scene == scene_name)
@@ -24,6 +25,7 @@ public class SC_scene_loader : MonoBehaviour
             Invoke("delay_load", 1f);
 
             GameObject.FindGameObjectWithTag("Player").GetComponent<SC_Player_controller>().can_act =false;
+            fade_obj.SetActive(true);
             fade.enabled = true;
         }
     }

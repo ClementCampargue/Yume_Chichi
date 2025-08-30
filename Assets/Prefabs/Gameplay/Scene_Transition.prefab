@@ -83,6 +83,7 @@ MonoBehaviour:
   spawn_point: {fileID: 8953913368500228369}
   current_scene: 
   fade: {fileID: 47139144910649555}
+  fade_obj: {fileID: 2820875730623427017}
 --- !u!50 &3333013111017516338
 Rigidbody2D:
   serializedVersion: 5
@@ -128,7 +129,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3651491273312731094
 RectTransform:
   m_ObjectHideFlags: 0
