@@ -40,9 +40,10 @@ Material:
     - _Dither_size: 0
     - _Dither_size_1: -219.3
     - _Effect_power: 1
+    - _On: 0
     - _Posterization_power: 1
     - _Posterization_power_1: 1
-    - _Resolution: 58.29
+    - _Resolution: 100
     - _Resolution_1: 0
     m_Colors: []
   m_BuildTextureStacks: []

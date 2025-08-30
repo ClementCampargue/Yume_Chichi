@@ -26,6 +26,11 @@ public class SC_scene_master : MonoBehaviour
 
     private void Update()
     {
+        if(cam_follow == null)
+        {
+            cam_follow = GameObject.Find("MAIN_CAMERA").GetComponent<SC_Player_follow>();
+
+        }
         cam_follow.target = Camera_target;
 
 
