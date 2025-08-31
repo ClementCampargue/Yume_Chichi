@@ -10,9 +10,12 @@ public class SC_NPC : MonoBehaviour
     public GameObject dialogue;
     public SpriteRenderer arrow;
 
+    private Animator animator;
+
     void Start()
     {
         player = GameObject.FindWithTag("Player").GetComponent<SC_Player_controller>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -45,7 +48,9 @@ public class SC_NPC : MonoBehaviour
         arrow.enabled = false;
         GameObject I_dialogue;
         I_dialogue = Instantiate(dialogue);
+        I_dialogue.SetActive(true);
         I_dialogue.GetComponent<SC_Dialogue_system>().npc = this;
+        I_dialogue.GetComponent<SC_Dialogue_system>().npc_anim = animator;
         player.can_act = false;
     }
 

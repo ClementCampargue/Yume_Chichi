@@ -5,11 +5,17 @@ TagManager:
   serializedVersion: 3
   tags:
   - Ground
+  - Carpet
+  - Wood
+  - Stone
+  - Metal
+  - Glass
+  - Sand
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground_shadow
   - Water
   - UI
   - 

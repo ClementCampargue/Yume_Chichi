@@ -13,7 +13,7 @@ public class SC_game_master : MonoBehaviour
     public int targetfps =240;
 
    [HideInInspector] public string previous_scene;
-    void Start()
+    void Awake()
     {
         DontDestroyOnLoad(gameObject);
 

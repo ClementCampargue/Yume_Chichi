@@ -6,7 +6,7 @@ public class SC_Player_follow : MonoBehaviour
     public Vector2 offset;
     public bool Horizontal_follow = true;
     public bool Vertical_follow = true;
-    void Awake()
+    void Start()
     {
         target = GameObject.FindWithTag("Player").transform;
     }
