@@ -1,27 +1,70 @@
+using NUnit.Framework;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class SC_NPC : MonoBehaviour
 {
-    public float distance;
+    public bool collided;
 
     private bool can_talk =true;
     private SC_Player_controller player;
-    public GameObject dialogue;
-    public SpriteRenderer arrow;
+    private SpriteRenderer arrow;
 
+    private Transform point_to_talk; 
     private Animator animator;
 
+    private int index;
+    private List<GameObject> dialogues;
+
+    public List<string> locked_dialogue_name;
     void Start()
     {
         player = GameObject.FindWithTag("Player").GetComponent<SC_Player_controller>();
         animator = GetComponent<Animator>();
+
+
+        for (int i = 0; i < locked_dialogue_name.Count; i++) 
+        {
+
+            if(PlayerPrefs.GetInt(locked_dialogue_name[i]) == 0)
+            {
+                Transform trs = transform.Find(locked_dialogue_name[i]);
+                foreach (Transform child in trs)
+                {
+                    if (child.gameObject.name.Contains("Dialogue") && !child.gameObject.name.Contains(locked_dialogue_name[i]))
+                    {
+                        dialogues.Add(child.gameObject);
+                    }
+                }
+            }
+            else
+            {
+
+                foreach (Transform child in transform)
+                {
+                    if (child.gameObject.name.Contains("Dialogue") && !child.gameObject.name.Contains(locked_dialogue_name[i]))
+                    {
+                        dialogues.Add(child.gameObject);
+                    }
+                }
+            }
+      
+        }
+
+
+
+        point_to_talk = transform.Find("Talk_zone");
+        arrow = transform.Find("Arrow").GetComponent<SpriteRenderer>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Vector2.Distance(player.transform.position, transform.position)< distance)
+        if(collided)
         {
             if (can_talk && Input.GetButtonDown("Fire1"))
             {
@@ -42,16 +85,21 @@ public class SC_NPC : MonoBehaviour
     void Start_dialogue()
     {
 
+       
         can_talk = false;
         player.rb.linearVelocity = Vector2.zero;
         player_anim();
         arrow.enabled = false;
         GameObject I_dialogue;
-        I_dialogue = Instantiate(dialogue);
+        I_dialogue = Instantiate(dialogues[index]);
         I_dialogue.SetActive(true);
         I_dialogue.GetComponent<SC_Dialogue_system>().npc = this;
         I_dialogue.GetComponent<SC_Dialogue_system>().npc_anim = animator;
-        player.can_act = false;
+        player.can_act = false; 
+        if (index < dialogues.Count - 1)
+        {
+            index++;
+        }
     }
 
     void player_anim()
@@ -109,5 +157,21 @@ public class SC_NPC : MonoBehaviour
     {
         can_talk = true;
         arrow.enabled = true;
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            collided = true;
+        }
+    }
+
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            collided = false;
+        }
     }
 }

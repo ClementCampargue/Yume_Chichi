@@ -4,7 +4,6 @@ using UnityEngine;
 public class SC_interactive_object : MonoBehaviour
 {
     private SC_Player_controller player;
-    public float distance;
     private bool canactivate = true;
 
     private SpriteRenderer arrow;
@@ -13,6 +12,8 @@ public class SC_interactive_object : MonoBehaviour
     private GameObject monologue_box;
     private bool can_talk;
     private Animator animator;
+
+    public bool collided;
 
     void Start()
     {
@@ -26,7 +27,7 @@ public class SC_interactive_object : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector2.Distance(player.transform.position, transform.position) < distance && can_talk)
+        if (collided && can_talk)
         {
             if (canactivate && Input.GetButtonDown("Fire1"))
             {
@@ -131,4 +132,22 @@ public class SC_interactive_object : MonoBehaviour
 
     }
 
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            collided = true;
+        }
+    }
+
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.tag == "Player")
+        {
+            collided = false;
+        }
+    }
 }

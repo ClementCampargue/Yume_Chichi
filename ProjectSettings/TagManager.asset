@@ -5,12 +5,12 @@ TagManager:
   serializedVersion: 3
   tags:
   - Ground
-  - Carpet
   - Wood
   - Stone
   - Metal
   - Glass
   - Sand
+  - Textile
   layers:
   - Default
   - TransparentFX

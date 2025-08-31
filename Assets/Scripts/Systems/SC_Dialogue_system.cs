@@ -20,6 +20,10 @@ public class SC_Dialogue_system : MonoBehaviour
     public AnimationClip[] anims;
     public float speed;
     public float speed_pause;
+    public float virgule_time;
+    public float point_time;
+    public float exclamation_point_time;
+    public float interrogation_point_time;
     private int index;
     private SC_Player_controller player;
     private Animator anim;
@@ -28,9 +32,12 @@ public class SC_Dialogue_system : MonoBehaviour
 
     private string check;
     private Image prt_spr;
+    private Image prt_spr2;
 
     private AudioSource talk_sfx;
     private AudioSource confirm_sfx;
+
+    private bool portrait_2;
 
     void Start()
     {
@@ -40,6 +47,7 @@ public class SC_Dialogue_system : MonoBehaviour
         anim = GetComponent<Animator>();
         camtarget = GameObject.Find("Cam_target").GetComponent<Transform>();
         prt_spr = transform.Find("Pivot").transform.Find("Portrait").GetComponent<Image>();
+        prt_spr2 = transform.Find("Pivot").transform.Find("Portrait_").GetComponent<Image>();
         text_component = transform.Find("Pivot").transform.Find("Dialogue_text").GetComponent<TextMeshProUGUI>();
         character_component = transform.Find("Pivot").transform.Find("Character_name").GetComponent<TextMeshProUGUI>();
 
@@ -52,7 +60,11 @@ public class SC_Dialogue_system : MonoBehaviour
         {
             npc_anim.Play(anims[index].name);
         }
-        prt_spr.sprite = portraits[index];
+        if (portraits.Length > 1)
+        {
+            prt_spr.sprite = portraits[index];
+        }
+        prt_spr2.sprite = portraits[index +1];
         talk_sfx.clip = talk_sound[index];
         character_component.text = character_names[index];
     }
@@ -64,7 +76,40 @@ public class SC_Dialogue_system : MonoBehaviour
         {
             if (text_component.text == check)
             {
-                NextLine();
+                if(portraits.Length > 1 && index < lines.Length - 1)
+                {
+                    if (!portrait_2)
+                    {
+                        if (prt_spr.sprite == portraits[index + 1])
+                        {
+                            NextLine();
+                        }
+                        else
+                        {
+                            anim.SetTrigger("Next");
+                        }
+
+                    }
+                    else
+                    {
+                        if (prt_spr2.sprite == portraits[index + 1])
+                        {
+                            NextLine();
+                        }
+                        else
+                        {
+                            anim.SetTrigger("Next2");
+                        }
+                        Debug.Log("2");
+
+                    }
+
+                }
+                else
+                {
+                    NextLine();
+                }
+
                 confirm_sfx.Play();
 
             }
@@ -109,9 +154,6 @@ public class SC_Dialogue_system : MonoBehaviour
         {
             npc_anim.Play(anims[index].name);
         }
-        prt_spr.sprite = portraits[index];
-        talk_sfx.clip = talk_sound[index];
-        character_component.text = character_names[index];
         check =lines[index];
 
         check = check.Replace("§", string.Empty);
@@ -126,6 +168,30 @@ public class SC_Dialogue_system : MonoBehaviour
                 talk_sfx.Stop();
                 text_component.text = text_component.text.Substring(0, text_component.text.Length - 1);
                 yield return new WaitForSeconds(speed_pause);
+            }
+            else if (text_component.text.EndsWith(","))
+            {
+                talk_sfx.Stop();
+                text_component.text = text_component.text.Substring(0, text_component.text.Length - 1);
+                yield return new WaitForSeconds(virgule_time);
+            }
+            else if (text_component.text.EndsWith("."))
+            {
+                talk_sfx.Stop();
+                text_component.text = text_component.text.Substring(0, text_component.text.Length - 1);
+                yield return new WaitForSeconds(point_time);
+            }
+            else if (text_component.text.EndsWith("?"))
+            {
+                talk_sfx.Stop();
+                text_component.text = text_component.text.Substring(0, text_component.text.Length - 1);
+                yield return new WaitForSeconds(interrogation_point_time);
+            }
+            else if (text_component.text.EndsWith("!"))
+            {
+                talk_sfx.Stop();
+                text_component.text = text_component.text.Substring(0, text_component.text.Length - 1);
+                yield return new WaitForSeconds(exclamation_point_time);
             }
             else
             {
@@ -148,8 +214,17 @@ public class SC_Dialogue_system : MonoBehaviour
 
     public void End_dialogue()
     {
-        anim.SetTrigger("disable");
+        if (portrait_2)
+        {
+            anim.SetTrigger("disable2");
+        }
+        else
+        {
+            anim.SetTrigger("disable");
+        }
+
         player.can_act = true;
+        index = 0;
 
     }
 
@@ -164,5 +239,36 @@ public class SC_Dialogue_system : MonoBehaviour
             interactive.Reset();
         }
         Destroy(gameObject);
+    }
+
+    public void update_portraits()
+    {
+        if(index < lines.Length - 1)
+        {
+
+            text_component.text = string.Empty;
+            talk_sfx.clip = talk_sound[index + 1];
+            character_component.text = character_names[index + 1];
+
+            portrait_2 = !portrait_2;
+            if (!portrait_2)
+            {
+                prt_spr2.sprite = portraits[index];
+                if (index < portraits.Length - 1)
+                {
+                    prt_spr.sprite = portraits[index + 1];
+                }
+            }
+            else
+            {
+                prt_spr.sprite = portraits[index];
+                if (index < portraits.Length - 1)
+                {
+                    prt_spr2.sprite = portraits[index + 1];
+                }
+            }
+        }
+        
+
     }
 }
