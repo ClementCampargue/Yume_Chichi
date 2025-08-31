@@ -1,70 +1,7 @@
 fileFormatVersion: 2
-guid: 82985de23e6ddc04185184cabda6ce80
+guid: 70f65ca96acfa58449fb229fa29b36e6
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 8633881525917383573
-    second: Spritesheet_0
-  - first:
-      213: -1771866121167276815
-    second: Spritesheet_1
-  - first:
-      213: 2091829175261615561
-    second: Spritesheet_2
-  - first:
-      213: 756911166660455246
-    second: Spritesheet_3
-  - first:
-      213: 403005533434085257
-    second: Spritesheet_4
-  - first:
-      213: 6961653080833796888
-    second: Spritesheet_5
-  - first:
-      213: 6266472923241529454
-    second: Spritesheet_6
-  - first:
-      213: -5282911695883833476
-    second: Spritesheet_7
-  - first:
-      213: 7021449457718125206
-    second: Spritesheet_8
-  - first:
-      213: 7357123456376359846
-    second: Spritesheet_9
-  - first:
-      213: -7343860702648896561
-    second: Spritesheet_10
-  - first:
-      213: -3531878321590394162
-    second: Spritesheet_11
-  - first:
-      213: -4888718896546230129
-    second: Spritesheet_12
-  - first:
-      213: 2118958311618589481
-    second: Spritesheet_13
-  - first:
-      213: 3228903892712671954
-    second: Spritesheet_14
-  - first:
-      213: -513590313336307935
-    second: Spritesheet_15
-  - first:
-      213: 1238036043553056152
-    second: Spritesheet_16
-  - first:
-      213: -1623444342149152459
-    second: Spritesheet_17
-  - first:
-      213: -1125653685376602382
-    second: Spritesheet_18
-  - first:
-      213: 8527111519951476930
-    second: Spritesheet_19
-  - first:
-      213: -7490898752223310767
-    second: Spritesheet_20
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,16 +37,16 @@ TextureImporter:
     filterMode: 0
     aniso: 1
     mipBias: 0
-    wrapU: 1
-    wrapV: 1
+    wrapU: 0
+    wrapV: 0
     wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
+  alignment: 7
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
@@ -186,9 +123,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 139
-        y: 275
+        y: 278
         width: 208
-        height: 94
+        height: 91
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -274,9 +211,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 230
-        y: 239
-        width: 27
-        height: 26
+        y: 242
+        width: 26
+        height: 23
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -296,9 +233,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 271
-        y: 242
-        width: 23
-        height: 23
+        y: 244
+        width: 21
+        height: 21
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -318,9 +255,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 300
-        y: 242
-        width: 22
-        height: 22
+        y: 245
+        width: 21
+        height: 19
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -529,28 +466,6 @@ TextureImporter:
       bones: []
       spriteID: 4cc14f348728807458cf60cb8b9a6e88
       internalID: 2063290109
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet_14
-      rect:
-        serializedVersion: 2
-        x: 409
-        y: 60
-        width: 36
-        height: 28
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f269eceedec24c1499ade3ea9c354c22
-      internalID: 3228903892712671954
       vertices: []
       indices: 
       edges: []
