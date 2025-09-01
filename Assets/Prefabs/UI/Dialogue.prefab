@@ -8,9 +8,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2226838366488773289, guid: abf76056907b9f946b922a6278aacb99, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 274
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226838366488773289, guid: abf76056907b9f946b922a6278aacb99, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 222
+      objectReference: {fileID: 0}
+    - target: {fileID: 3475618581540156084, guid: abf76056907b9f946b922a6278aacb99, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3789284218829927130, guid: abf76056907b9f946b922a6278aacb99, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5117641935963147062, guid: abf76056907b9f946b922a6278aacb99, type: 3}
       propertyPath: m_Name
       value: Dialogue
+      objectReference: {fileID: 0}
+    - target: {fileID: 5117641935963147062, guid: abf76056907b9f946b922a6278aacb99, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6268187768607584424, guid: abf76056907b9f946b922a6278aacb99, type: 3}
       propertyPath: anims.Array.size

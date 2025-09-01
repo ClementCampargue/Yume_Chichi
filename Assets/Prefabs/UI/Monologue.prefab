@@ -43,7 +43,7 @@ PrefabInstance:
     - target: {fileID: 4865711882370039171, guid: abf76056907b9f946b922a6278aacb99, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -7343860702648896561, guid: 82985de23e6ddc04185184cabda6ce80, type: 3}
+      objectReference: {fileID: -8863112667532694526, guid: 63defdbefed2f984b9c43ce819848b3c, type: 3}
     - target: {fileID: 5117641935963147062, guid: abf76056907b9f946b922a6278aacb99, type: 3}
       propertyPath: m_Name
       value: Monologue
@@ -58,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6102662412605138868, guid: abf76056907b9f946b922a6278aacb99, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -22.000008
+      value: -197.2
       objectReference: {fileID: 0}
     - target: {fileID: 6268187768607584424, guid: abf76056907b9f946b922a6278aacb99, type: 3}
       propertyPath: anims.Array.size
@@ -187,6 +187,10 @@ PrefabInstance:
     - target: {fileID: 6767493360549927725, guid: abf76056907b9f946b922a6278aacb99, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -31.000008
+      objectReference: {fileID: 0}
+    - target: {fileID: 7842244050520334315, guid: abf76056907b9f946b922a6278aacb99, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9156805267116726874, guid: abf76056907b9f946b922a6278aacb99, type: 3}
       propertyPath: m_AnchoredPosition.x
