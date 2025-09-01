@@ -151,25 +151,21 @@ public class SC_Dialogue_system : MonoBehaviour
             else if (text_component.text.EndsWith(","))
             {
                 talk_sfx.Stop();
-                text_component.text = text_component.text.Substring(0, text_component.text.Length - 1);
                 yield return new WaitForSeconds(virgule_time);
             }
             else if (text_component.text.EndsWith("."))
             {
                 talk_sfx.Stop();
-                text_component.text = text_component.text.Substring(0, text_component.text.Length - 1);
                 yield return new WaitForSeconds(point_time);
             }
             else if (text_component.text.EndsWith("?"))
             {
                 talk_sfx.Stop();
-                text_component.text = text_component.text.Substring(0, text_component.text.Length - 1);
                 yield return new WaitForSeconds(interrogation_point_time);
             }
             else if (text_component.text.EndsWith("!"))
             {
                 talk_sfx.Stop();
-                text_component.text = text_component.text.Substring(0, text_component.text.Length - 1);
                 yield return new WaitForSeconds(exclamation_point_time);
             }
             else
