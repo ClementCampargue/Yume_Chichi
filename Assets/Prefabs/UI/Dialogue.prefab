@@ -40,14 +40,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6102662412605138868, guid: abf76056907b9f946b922a6278aacb99, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -101.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6102662412605138868, guid: abf76056907b9f946b922a6278aacb99, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 11.7
-      objectReference: {fileID: 0}
     - target: {fileID: 6268187768607584424, guid: abf76056907b9f946b922a6278aacb99, type: 3}
       propertyPath: speed
       value: 0.02

@@ -61,23 +61,26 @@ public class SC_Dialogue_system : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
+        string text2 = lines[index].Replace("%","").Replace("£", "").Replace("µ", "");
+        string text = text_component.text;
+        text = text_component.text.Replace("\n", "").Replace("\r", "").Replace(" ", "");
+        check = check.Replace("\n", "").Replace("\r", "").Replace(" ", "");
+
+
         if (Input.GetButtonDown("Fire1"))
         {
-
             if (index < lines.Length - 1)
             {
 
-                if (text_component.text == check)
+                if (text == check)
                 {
                     Invoke("update_visuals", 0.1f);
                     confirm_sfx.Play();
                     index++;
                     if (index < lines.Length)
                     {
-                        Debug.Log(portraits[index].ToString());
                         if (character_names[index - 1] != character_names[index])
                         {
                             anim.ResetTrigger("no_character_start");
@@ -118,13 +121,13 @@ public class SC_Dialogue_system : MonoBehaviour
                     }
 
                     StopAllCoroutines();
-                    text_component.text = check;
+                    text_component.text = text2;
                     Invoke("delay_input", 0.2f);
                 }
             }
             else if(!end)
             {
-                if (text_component.text == check)
+                if (text == check)
                 {
                     end = true;
                     if (!choice)
@@ -146,13 +149,13 @@ public class SC_Dialogue_system : MonoBehaviour
                         cursor.enabled = true;
                     }
                     StopAllCoroutines();
-                    text_component.text = check;
+                    text_component.text = text2;
                     Invoke("delay_input", 0.2f);
                 }
             }
         }
 
-        if (text_component.text == check)
+        if (text == check)
         {
   
             if (choice && index == lines.Length - 1)
@@ -201,36 +204,55 @@ public class SC_Dialogue_system : MonoBehaviour
         check = check.Replace("µ", string.Empty);
         check = check.Replace("£", string.Empty);
 
-        foreach (char c in lines[index].ToCharArray())
+        text_component.text = string.Empty ;
+        string[] words = lines[index].Split(' ');
+        foreach (string word in words)
         {
-            text_component.text += c;
-            if (text_component.text.EndsWith("µ"))
+            string testText = text_component.text + (text_component.text.EndsWith("\n") || text_component.text == "" ? "" : " ") + word;
+            text_component.ForceMeshUpdate();
+            float currentWidth = text_component.GetPreferredValues(testText).x;
+
+            if (currentWidth > text_component.rectTransform.rect.width)
             {
-                talk_sfx.Stop();
-                text_component.text = text_component.text.Substring(0, text_component.text.Length - 1);
-                yield return new WaitForSeconds(speed_pause_);
+                text_component.text += "\n";
             }
-            else if (text_component.text.EndsWith("£"))
+            else if (text_component.text != "" && !text_component.text.EndsWith("\n"))
             {
-                talk_sfx.Stop();
-                text_component.text = text_component.text.Substring(0, text_component.text.Length - 1);
-                yield return new WaitForSeconds(speed_pause__);
+                text_component.text += " ";
             }
-            else if (text_component.text.EndsWith("%"))
+            foreach (char c in word)
             {
-                talk_sfx.Stop();
-                text_component.text = text_component.text.Substring(0, text_component.text.Length - 1);
-                yield return new WaitForSeconds(speed_pause___);
-            }
-            else
-            {
-                if (!talk_sfx.isPlaying)
+                text_component.text += c;
+                if (text_component.text.EndsWith("µ"))
                 {
-                    talk_sfx.Play();
+                    talk_sfx.Stop();
+                    text_component.text = text_component.text.Substring(0, text_component.text.Length - 1);
+                    yield return new WaitForSeconds(speed_pause_);
                 }
-                yield return new WaitForSeconds(speed);
+                else if (text_component.text.EndsWith("£"))
+                {
+                    talk_sfx.Stop();
+                    text_component.text = text_component.text.Substring(0, text_component.text.Length - 1);
+                    yield return new WaitForSeconds(speed_pause__);
+                }
+                else if (text_component.text.EndsWith("%"))
+                {
+                    talk_sfx.Stop();
+                    text_component.text = text_component.text.Substring(0, text_component.text.Length - 1);
+                    yield return new WaitForSeconds(speed_pause___);
+                }
+                else
+                {
+                    if (!talk_sfx.isPlaying)
+                    {
+                        talk_sfx.Play();
+                    }
+                    yield return new WaitForSeconds(speed);
+                }
             }
+
         }
+
         if (cursor.enabled)
         {
             cursor.SetBool("On", true);
