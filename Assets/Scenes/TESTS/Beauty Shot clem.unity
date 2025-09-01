@@ -3198,7 +3198,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 535416387345148538, guid: a07913fab27504f4eb3d32518b920809, type: 3}
       propertyPath: anims.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 535416387345148538, guid: a07913fab27504f4eb3d32518b920809, type: 3}
       propertyPath: lines.Array.size
@@ -3206,16 +3206,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 535416387345148538, guid: a07913fab27504f4eb3d32518b920809, type: 3}
       propertyPath: 'lines.Array.data[0]'
-      value: la bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela
-        bisela bisela bisela bisela bisela bisela bisela bisela bisela bise
+      value: 'la bisela '
       objectReference: {fileID: 0}
     - target: {fileID: 535416387345148538, guid: a07913fab27504f4eb3d32518b920809, type: 3}
       propertyPath: 'lines.Array.data[1]'
-      value: la bisela bisela bisela bisela bise
+      value: la bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela
+        bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela
+        bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela
+        bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela
+        bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela
+        bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela
+        bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela
+        bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela
+        bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela
+        bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela
+        bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela
+        bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela
+        bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela
+        bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela
+        bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela
+        bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela
+        bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela
+        bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela
+        bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela
+        bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela
+        bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela
+        bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela
+        bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela
+        bisela bisela bisela bisela bisela bisela bisela bise
       objectReference: {fileID: 0}
     - target: {fileID: 535416387345148538, guid: a07913fab27504f4eb3d32518b920809, type: 3}
       propertyPath: 'lines.Array.data[2]'
-      value: la bisela bisela bisela bise
+      value: la bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela
+        bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela
+        bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela
+        bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela
+        bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela bisela
+        bisela bisela bisela bisela bisela bise
       objectReference: {fileID: 0}
     - target: {fileID: 535416387345148538, guid: a07913fab27504f4eb3d32518b920809, type: 3}
       propertyPath: 'lines.Array.data[3]'

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
+using System.Security.Cryptography.X509Certificates;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -68,15 +69,12 @@ public class SC_Dialogue_system : MonoBehaviour
 
             if (index < lines.Length - 1)
             {
+
                 if (text_component.text == check)
                 {
-                    cursor.ResetTrigger("in");
-                    cursor.SetTrigger("out");
                     Invoke("update_visuals", 0.1f);
                     confirm_sfx.Play();
-
                     index++;
-
                     if (index < lines.Length)
                     {
                         Debug.Log(portraits[index].ToString());
@@ -104,10 +102,21 @@ public class SC_Dialogue_system : MonoBehaviour
                             anim.SetTrigger("Next_nocharacter");
                         }
                     }
+                    cursor.SetBool("On", false);
 
                 }
                 else if(typing)
                 {
+                    if (cursor.enabled)
+                    {
+                        cursor.SetBool("On", true);
+                    }
+                    else
+                    {
+                        cursor.SetBool("On", true);
+                        cursor.enabled = true;
+                    }
+
                     StopAllCoroutines();
                     text_component.text = check;
                     Invoke("delay_input", 0.2f);
@@ -122,9 +131,20 @@ public class SC_Dialogue_system : MonoBehaviour
                     {
                         End_dialogue();
                     }
+                    cursor.SetBool("On", false);
+
                 }
                 else if (typing)
                 {
+                    if (cursor.enabled)
+                    {
+                        cursor.SetBool("On", true);
+                    }
+                    else
+                    {
+                        cursor.SetBool("On", true);
+                        cursor.enabled = true;
+                    }
                     StopAllCoroutines();
                     text_component.text = check;
                     Invoke("delay_input", 0.2f);
@@ -134,26 +154,20 @@ public class SC_Dialogue_system : MonoBehaviour
 
         if (text_component.text == check)
         {
+  
             if (choice && index == lines.Length - 1)
             {
                 choices_obj.SetActive(true);
             }
+
             typing = false;
-
             talk_sfx.Stop();
-            if (cursor.enabled)
-            {
-                cursor.ResetTrigger("out");
-                cursor.SetTrigger("in");
 
-            }
-            else
-            {
-                cursor.enabled = true;
-            }
         }
 
     }
+
+
 
     void delay_input()
     {
@@ -163,7 +177,7 @@ public class SC_Dialogue_system : MonoBehaviour
     void NextLine()
     {
         typing = true;
-        cursor.SetTrigger("out");
+
         if (index < lines.Length )
         {
             text_component.text = string.Empty;
@@ -177,6 +191,7 @@ public class SC_Dialogue_system : MonoBehaviour
 
     IEnumerator typeline()
     {
+
         if (anims[index] != null)
         {
             npc_anim.Play(anims[index].name);
@@ -215,11 +230,20 @@ public class SC_Dialogue_system : MonoBehaviour
                 }
                 yield return new WaitForSeconds(speed);
             }
-
-
-            
         }
+        if (cursor.enabled)
+        {
+            cursor.SetBool("On", true);
+        }
+        else
+        {
+            cursor.SetBool("On", true);
+            cursor.enabled = true;
+        }
+
+
     }
+
     public void Start_dialogue()
     {
         index = 0;
@@ -245,12 +269,9 @@ public class SC_Dialogue_system : MonoBehaviour
             character_component = transform.Find("Pivot").transform.Find("Character_name").GetComponent<TextMeshProUGUI>();
             confirm_sfx = transform.Find("Audio").transform.Find("Confirm_sound").GetComponent<AudioSource>();
             talk_sfx = transform.Find("Audio").transform.Find("Talk_sound").GetComponent<AudioSource>();
-            cursor = transform.Find("Pivot").transform.Find("Cursor").GetComponent<Animator>();
+            cursor = transform.Find("Cursor").GetComponent<Animator>();
             choices_obj = transform.Find("Pivot").transform.Find("Buttons").gameObject;
         }
-
-
-
 
         if (anims[index] != null)
         { 
@@ -273,8 +294,8 @@ public class SC_Dialogue_system : MonoBehaviour
         typing = true;
         text_component.text = string.Empty;
         StartCoroutine(typeline());
-
     }
+
     public void End_dialogue()
     {
         last_dialoguie = true;
@@ -322,10 +343,9 @@ public class SC_Dialogue_system : MonoBehaviour
             {
                 anim.SetTrigger("disable");
             }
-
         }
-
     }
+
     public void Destroy_dialogue()
     {
         if(npc != null)
@@ -337,14 +357,12 @@ public class SC_Dialogue_system : MonoBehaviour
             interactive.Reset();
         }
         index = 0;
-
         Destroy(anim.gameObject);
     }
     public void choosen()
     {
         anim.ResetTrigger("no_character_start");
         anim.SetTrigger("Next");
-
         Destroy(choices_obj);
         Invoke("choosen_delay", 0.5f);
         text_component.text = string.Empty;
@@ -377,6 +395,5 @@ public class SC_Dialogue_system : MonoBehaviour
         talk_sfx.clip = talk_sound[index];
         character_component.text = character_names[index];
         camtarget.position = transform.position;
- 
     }
 }

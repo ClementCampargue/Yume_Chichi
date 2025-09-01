@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -9,18 +11,25 @@ public class SC_interactive_object : MonoBehaviour
     private SpriteRenderer arrow;
 
     public bool monologue;
-    private GameObject monologue_box;
+    private List<GameObject> dialogues = new List<GameObject>();
     private bool can_talk;
     private Animator animator;
 
     public bool collided;
+    private int index;
 
     void Start()
     {
         can_talk = true;
         player = GameObject.FindWithTag("Player").GetComponent<SC_Player_controller>();
         arrow = transform.Find("Arrow").GetComponent<SpriteRenderer>();
-        monologue_box = transform.Find("Monologue").gameObject;
+        foreach (Transform child in transform)
+        {
+            if (child.name.Contains("Monologue"))
+            {
+                dialogues.Add(child.gameObject);
+            }
+        }
         animator = GetComponent<Animator>();
     }
 
@@ -71,12 +80,15 @@ public class SC_interactive_object : MonoBehaviour
         player_anim();
         arrow.enabled = false;
         GameObject I_dialogue;
-        I_dialogue = Instantiate(monologue_box);
+        I_dialogue = Instantiate(dialogues[index]);
         I_dialogue.transform.parent = transform;
         I_dialogue.SetActive(true);
         I_dialogue.GetComponent<SC_Dialogue_system>().interactive = this;
         player.can_act = false;
-        animator.enabled = true;
+        if (index < dialogues.Count - 1)
+        {
+            index++;
+        }
     }
 
 
