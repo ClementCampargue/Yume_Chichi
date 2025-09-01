@@ -20,6 +20,14 @@ PrefabInstance:
       propertyPath: m_PreserveAspect
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3710166394094077686, guid: abf76056907b9f946b922a6278aacb99, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 270.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710166394094077686, guid: abf76056907b9f946b922a6278aacb99, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -211.9
+      objectReference: {fileID: 0}
     - target: {fileID: 3789284218829927130, guid: abf76056907b9f946b922a6278aacb99, type: 3}
       propertyPath: m_PreserveAspect
       value: 1
@@ -31,6 +39,18 @@ PrefabInstance:
     - target: {fileID: 5117641935963147062, guid: abf76056907b9f946b922a6278aacb99, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6102662412605138868, guid: abf76056907b9f946b922a6278aacb99, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -101.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6102662412605138868, guid: abf76056907b9f946b922a6278aacb99, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 11.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6268187768607584424, guid: abf76056907b9f946b922a6278aacb99, type: 3}
+      propertyPath: speed
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 6268187768607584424, guid: abf76056907b9f946b922a6278aacb99, type: 3}
       propertyPath: anims.Array.size

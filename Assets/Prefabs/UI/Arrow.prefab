@@ -101,6 +101,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  offset: {x: 0, y: 0.5}
+  offset: {x: 0.3, y: 0.2}
   Horizontal_follow: 1
   Vertical_follow: 1
