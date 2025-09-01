@@ -116,7 +116,6 @@ public class SC_Dialogue_system : MonoBehaviour
     void NextLine()
     {
         cursor.SetActive(false);
-
         if (index < lines.Length - 1)
         {
             index++;
@@ -227,8 +226,7 @@ public class SC_Dialogue_system : MonoBehaviour
         camtarget.position = transform.position;
         if (portraits[0].ToString() == "null")
         {
-            anim.SetTrigger("Next_nocharacter");
-            Invoke("start_typing", 0.5f);
+            anim.SetTrigger("no_character_start");
         }
     }
 
@@ -258,6 +256,8 @@ public class SC_Dialogue_system : MonoBehaviour
                 child.GetComponent<SC_Dialogue_system>().talk_sfx = talk_sfx;
                 child.GetComponent<SC_Dialogue_system>().cursor = cursor;
                 child.gameObject.SetActive(true);
+                anim.ResetTrigger("no_character_start");
+
                 if (portraits[index].ToString() != "null")
                 {
                     anim.SetTrigger("Next");
@@ -272,6 +272,7 @@ public class SC_Dialogue_system : MonoBehaviour
         }
         if (last_dialoguie)
         {
+            anim.ResetTrigger("no_character_start");
             index = 0;
             player.can_act = true;
             if (portraits[index].ToString() == "null") 
@@ -303,6 +304,7 @@ public class SC_Dialogue_system : MonoBehaviour
 
     public void choosen()
     {
+        anim.ResetTrigger("no_character_start");
         anim.SetTrigger("Next");
 
         Destroy(choices_obj);
@@ -334,6 +336,7 @@ public class SC_Dialogue_system : MonoBehaviour
             Debug.Log(portraits[index].ToString());
             if (portraits[index -1] != portraits[index])
             {
+                anim.ResetTrigger("no_character_start");
                 if (portraits[index].ToString() !="null")
                 {
                     anim.SetTrigger("Next");
