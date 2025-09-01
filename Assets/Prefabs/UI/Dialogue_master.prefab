@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -182, y: -127}
+  m_AnchoredPosition: {x: -182, y: -131}
   m_SizeDelta: {x: 274, y: 222}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7471428871063639187
@@ -66,9 +66,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 8633881525917383573, guid: 82985de23e6ddc04185184cabda6ce80, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2da33aff9473d2c4ab6cb9ee8947e7a7, type: 3}
   m_Type: 0
-  m_PreserveAspect: 1
+  m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 21300000, guid: 6ac7a280c1d65bc4589c7a2447d1349e, type: 3}
+  - {fileID: 0}
   time_between_frames: 0.5
   counter: 0
   loop: 1
@@ -817,7 +817,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: a0c3e6a390badb043b4fcc8d7c64134b, type: 3}
   m_Resource: {fileID: 8300000, guid: a0c3e6a390badb043b4fcc8d7c64134b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.023
   m_Pitch: 1
   Loop: 0
   Mute: 0
