@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2da33aff9473d2c4ab6cb9ee8947e7a7, type: 3}
+  m_Sprite: {fileID: 8633881525917383573, guid: 82985de23e6ddc04185184cabda6ce80, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -568,11 +568,9 @@ MonoBehaviour:
   talk_sound: []
   anims: []
   speed: 0.01
-  speed_pause: 1
-  virgule_time: 0.2
-  point_time: 0.5
-  exclamation_point_time: 0.5
-  interrogation_point_time: 0.5
+  speed_pause_: 0.1
+  speed_pause__: 0.2
+  speed_pause___: 0.5
   player: {fileID: 0}
   anim: {fileID: 0}
   cursor: {fileID: 0}

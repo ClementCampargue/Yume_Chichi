@@ -8,25 +8,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3789284218829927130, guid: abf76056907b9f946b922a6278aacb99, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4768354870737630471, guid: abf76056907b9f946b922a6278aacb99, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -180.6
-      objectReference: {fileID: 0}
     - target: {fileID: 5117641935963147062, guid: abf76056907b9f946b922a6278aacb99, type: 3}
       propertyPath: m_Name
       value: Monologue
-      objectReference: {fileID: 0}
-    - target: {fileID: 5117641935963147062, guid: abf76056907b9f946b922a6278aacb99, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6102662412605138868, guid: abf76056907b9f946b922a6278aacb99, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -190.1
       objectReference: {fileID: 0}
     - target: {fileID: 6326454652774161632, guid: abf76056907b9f946b922a6278aacb99, type: 3}
       propertyPath: m_Pivot.x
@@ -107,14 +91,6 @@ PrefabInstance:
     - target: {fileID: 6326454652774161632, guid: abf76056907b9f946b922a6278aacb99, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6767493360549927725, guid: abf76056907b9f946b922a6278aacb99, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -22
-      objectReference: {fileID: 0}
-    - target: {fileID: 9156805267116726874, guid: abf76056907b9f946b922a6278aacb99, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 177.00003
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
