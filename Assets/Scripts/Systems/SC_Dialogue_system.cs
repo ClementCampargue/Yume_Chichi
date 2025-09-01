@@ -30,7 +30,7 @@ public class SC_Dialogue_system : MonoBehaviour
     [HideInInspector] public SC_Player_controller player;
     [HideInInspector] public Animator anim;
 
-    [HideInInspector] public GameObject cursor;
+    [HideInInspector] public Animator cursor;
 
     private string check; 
     private Image prt_spr;
@@ -45,6 +45,7 @@ public class SC_Dialogue_system : MonoBehaviour
     private bool typing;
 
     private bool last_dialoguie;
+    private bool end;
 
     void Start()
     {
@@ -62,29 +63,71 @@ public class SC_Dialogue_system : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && !typing)
+        if (Input.GetButtonDown("Fire1"))
         {
 
             if (index < lines.Length - 1)
             {
                 if (text_component.text == check)
                 {
-                    Invoke("update_visuals", 0.3f);
+                    cursor.ResetTrigger("in");
+                    cursor.SetTrigger("out");
+                    Invoke("update_visuals", 0.1f);
                     confirm_sfx.Play();
+
+                    index++;
+
+                    if (index < lines.Length)
+                    {
+                        Debug.Log(portraits[index].ToString());
+                        if (character_names[index - 1] != character_names[index])
+                        {
+                            anim.ResetTrigger("no_character_start");
+                            if (portraits[index].ToString() != "null")
+                            {
+                                anim.SetTrigger("Next");
+                            }
+                            else
+                            {
+                                anim.SetTrigger("Next_nocharacter");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (portraits[index].name != string.Empty)
+                        {
+                            anim.SetTrigger("Next");
+                        }
+                        else
+                        {
+                            anim.SetTrigger("Next_nocharacter");
+                        }
+                    }
+
                 }
-                else
+                else if(typing)
                 {
                     StopAllCoroutines();
                     text_component.text = check;
-                    Invoke("delay_input", 0.5f);
-
+                    Invoke("delay_input", 0.2f);
                 }
             }
-            else
+            else if(!end)
             {
-                if (!choice)
+                if (text_component.text == check)
                 {
-                    End_dialogue();
+                    end = true;
+                    if (!choice)
+                    {
+                        End_dialogue();
+                    }
+                }
+                else if (typing)
+                {
+                    StopAllCoroutines();
+                    text_component.text = check;
+                    Invoke("delay_input", 0.2f);
                 }
             }
         }
@@ -98,11 +141,16 @@ public class SC_Dialogue_system : MonoBehaviour
             typing = false;
 
             talk_sfx.Stop();
-            cursor.SetActive(true);
-        }
-        else
-        {
-            cursor.SetActive(false);
+            if (cursor.enabled)
+            {
+                cursor.ResetTrigger("out");
+                cursor.SetTrigger("in");
+
+            }
+            else
+            {
+                cursor.enabled = true;
+            }
         }
 
     }
@@ -114,10 +162,10 @@ public class SC_Dialogue_system : MonoBehaviour
 
     void NextLine()
     {
-        cursor.SetActive(false);
-        if (index < lines.Length - 1)
+        typing = true;
+        cursor.SetTrigger("out");
+        if (index < lines.Length )
         {
-            index++;
             text_component.text = string.Empty;
             StartCoroutine(typeline());
         }
@@ -129,7 +177,6 @@ public class SC_Dialogue_system : MonoBehaviour
 
     IEnumerator typeline()
     {
-        typing = true;
         if (anims[index] != null)
         {
             npc_anim.Play(anims[index].name);
@@ -173,7 +220,6 @@ public class SC_Dialogue_system : MonoBehaviour
             
         }
     }
-
     public void Start_dialogue()
     {
         index = 0;
@@ -199,7 +245,7 @@ public class SC_Dialogue_system : MonoBehaviour
             character_component = transform.Find("Pivot").transform.Find("Character_name").GetComponent<TextMeshProUGUI>();
             confirm_sfx = transform.Find("Audio").transform.Find("Confirm_sound").GetComponent<AudioSource>();
             talk_sfx = transform.Find("Audio").transform.Find("Talk_sound").GetComponent<AudioSource>();
-            cursor = transform.Find("Pivot").transform.Find("Cursor").gameObject;
+            cursor = transform.Find("Pivot").transform.Find("Cursor").GetComponent<Animator>();
             choices_obj = transform.Find("Pivot").transform.Find("Buttons").gameObject;
         }
 
@@ -222,9 +268,9 @@ public class SC_Dialogue_system : MonoBehaviour
             anim.SetTrigger("no_character_start");
         }
     }
-
     public void start_typing()
     {
+        typing = true;
         text_component.text = string.Empty;
         StartCoroutine(typeline());
 
@@ -232,6 +278,7 @@ public class SC_Dialogue_system : MonoBehaviour
     public void End_dialogue()
     {
         last_dialoguie = true;
+        typing = false;
 
         foreach (Transform child in transform)
         {
@@ -266,7 +313,6 @@ public class SC_Dialogue_system : MonoBehaviour
         if (last_dialoguie)
         {
             anim.ResetTrigger("no_character_start");
-            index = 0;
             player.can_act = true;
             if (portraits[index].ToString() == "null") 
             {
@@ -280,7 +326,6 @@ public class SC_Dialogue_system : MonoBehaviour
         }
 
     }
-
     public void Destroy_dialogue()
     {
         if(npc != null)
@@ -291,10 +336,10 @@ public class SC_Dialogue_system : MonoBehaviour
         {
             interactive.Reset();
         }
+        index = 0;
+
         Destroy(anim.gameObject);
     }
-
-
     public void choosen()
     {
         anim.ResetTrigger("no_character_start");
@@ -304,7 +349,6 @@ public class SC_Dialogue_system : MonoBehaviour
         Invoke("choosen_delay", 0.5f);
         text_component.text = string.Empty;
     }
-
     void choosen_delay()
     {
         choices[choice_index].GetComponent<SC_Dialogue_system>().child_dialogue = true;
@@ -319,39 +363,9 @@ public class SC_Dialogue_system : MonoBehaviour
         choices[choice_index].SetActive(true);
         this.enabled = false;
     }
-
     public void update_visuals()
     {
         NextLine();
-
-        if(index < lines.Length)
-        {
-            Debug.Log(portraits[index].ToString());
-            if (character_names[index -1] != character_names[index])
-            {
-                anim.ResetTrigger("no_character_start");
-                if (portraits[index].ToString() !="null")
-                {
-                    anim.SetTrigger("Next");
-                }
-                else
-                {
-                    anim.SetTrigger("Next_nocharacter");
-                }
-            }
-        }
-        else
-        {
-            if (portraits[index].name == string.Empty)
-            {
-                anim.SetTrigger("Next");
-            }
-            else
-            {
-                anim.SetTrigger("Next");
-                // anim.SetTrigger("Next_nocharacter");
-            }
-        }
         if (anims[index] != null)
         {
             npc_anim.Play(anims[index].name);

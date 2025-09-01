@@ -220,6 +220,7 @@ GameObject:
   - component: {fileID: 9125094474746319832}
   - component: {fileID: 1647701863431872854}
   - component: {fileID: 5851999866233478466}
+  - component: {fileID: 5593961836473729143}
   m_Layer: 5
   m_Name: Cursor
   m_TagString: Untagged
@@ -297,6 +298,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotate_speed: 100
+--- !u!95 &5593961836473729143
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2589376150681359873}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: abce8921e70c2d3489f2db011ef0e3a3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4256438276675856906
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,7 +476,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6326454652774161632
 RectTransform:
   m_ObjectHideFlags: 0
