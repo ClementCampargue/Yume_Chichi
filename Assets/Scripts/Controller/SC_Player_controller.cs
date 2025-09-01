@@ -1,5 +1,4 @@
 using Unity.Cinemachine;
-using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class SC_Player_controller : MonoBehaviour
