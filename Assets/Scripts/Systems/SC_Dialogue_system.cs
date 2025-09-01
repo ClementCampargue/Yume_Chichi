@@ -269,7 +269,7 @@ public class SC_Dialogue_system : MonoBehaviour
             character_component = transform.Find("Pivot").transform.Find("Character_name").GetComponent<TextMeshProUGUI>();
             confirm_sfx = transform.Find("Audio").transform.Find("Confirm_sound").GetComponent<AudioSource>();
             talk_sfx = transform.Find("Audio").transform.Find("Talk_sound").GetComponent<AudioSource>();
-            cursor = transform.Find("Cursor").GetComponent<Animator>();
+            cursor = transform.Find("Cursor_pivot").transform.Find("Cursor").GetComponent<Animator>();
             choices_obj = transform.Find("Pivot").transform.Find("Buttons").gameObject;
         }
 
