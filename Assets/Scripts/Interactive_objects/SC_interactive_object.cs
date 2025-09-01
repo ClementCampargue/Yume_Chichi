@@ -72,6 +72,7 @@ public class SC_interactive_object : MonoBehaviour
         arrow.enabled = false;
         GameObject I_dialogue;
         I_dialogue = Instantiate(monologue_box);
+        I_dialogue.transform.parent = transform;
         I_dialogue.SetActive(true);
         I_dialogue.GetComponent<SC_Dialogue_system>().interactive = this;
         player.can_act = false;

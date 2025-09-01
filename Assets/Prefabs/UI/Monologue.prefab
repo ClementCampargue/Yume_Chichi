@@ -24,6 +24,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -294
       objectReference: {fileID: 0}
+    - target: {fileID: 2990206051079182579, guid: abf76056907b9f946b922a6278aacb99, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3789284218829927130, guid: abf76056907b9f946b922a6278aacb99, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4256438276675856906, guid: abf76056907b9f946b922a6278aacb99, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -63,6 +71,10 @@ PrefabInstance:
     - target: {fileID: 6268187768607584424, guid: abf76056907b9f946b922a6278aacb99, type: 3}
       propertyPath: 'anims.Array.data[0]'
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6268187768607584424, guid: abf76056907b9f946b922a6278aacb99, type: 3}
+      propertyPath: 'lines.Array.data[0]'
+      value: zdzdaadaad
       objectReference: {fileID: 0}
     - target: {fileID: 6268187768607584424, guid: abf76056907b9f946b922a6278aacb99, type: 3}
       propertyPath: portraits.Array.size
@@ -181,7 +193,8 @@ PrefabInstance:
       value: 168.00003
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4155471859510654292, guid: abf76056907b9f946b922a6278aacb99, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abf76056907b9f946b922a6278aacb99, type: 3}

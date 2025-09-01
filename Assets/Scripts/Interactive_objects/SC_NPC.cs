@@ -13,55 +13,54 @@ public class SC_NPC : MonoBehaviour
     private SC_Player_controller player;
     private SpriteRenderer arrow;
 
-    private Transform point_to_talk; 
     private Animator animator;
 
     private int index;
     private List<GameObject> dialogues;
 
     public List<string> locked_dialogue_name;
+    public bool lock_priority;
     void Start()
     {
         player = GameObject.FindWithTag("Player").GetComponent<SC_Player_controller>();
         animator = GetComponent<Animator>();
-
-
-        for (int i = 0; i < locked_dialogue_name.Count; i++) 
-        {
-
-            if(PlayerPrefs.GetInt(locked_dialogue_name[i]) == 0)
-            {
-                Transform trs = transform.Find(locked_dialogue_name[i]);
-                foreach (Transform child in trs)
-                {
-                    if (child.gameObject.name.Contains("Dialogue") && !child.gameObject.name.Contains(locked_dialogue_name[i]))
-                    {
-                        dialogues.Add(child.gameObject);
-                    }
-                }
-            }
-            else
-            {
-
-                foreach (Transform child in transform)
-                {
-                    if (child.gameObject.name.Contains("Dialogue") && !child.gameObject.name.Contains(locked_dialogue_name[i]))
-                    {
-                        dialogues.Add(child.gameObject);
-                    }
-                }
-            }
-      
-        }
-
-
-
-        point_to_talk = transform.Find("Talk_zone");
         arrow = transform.Find("Arrow").GetComponent<SpriteRenderer>();
 
-    }
 
-    // Update is called once per frame
+        if (locked_dialogue_name.Count>0) 
+        {
+            for (int i = 0; i < locked_dialogue_name.Count; i++)
+            {
+
+                if (PlayerPrefs.GetInt(locked_dialogue_name[i]) == 0)
+                {
+                    foreach (Transform child in transform)
+                    {
+                        if (child.gameObject.name.Contains("Dialogue") && child.gameObject.name.Contains(locked_dialogue_name[i]))
+                        {
+                            if (lock_priority && dialogues.Count>0)
+                            {
+                                dialogues.RemoveAt(0);
+                            }
+                            dialogues.Add(child.gameObject);
+                        }
+
+                    }
+                }
+            }
+        }
+        else
+        {
+            foreach (Transform child in transform) 
+            {
+                if (child.name.Contains("Dialogue"))
+                {
+                    dialogues.Add(child.gameObject);
+                }
+            }
+        }
+         
+    }
     void Update()
     {
         if(collided)
@@ -84,14 +83,13 @@ public class SC_NPC : MonoBehaviour
 
     void Start_dialogue()
     {
-
-       
         can_talk = false;
         player.rb.linearVelocity = Vector2.zero;
         player_anim();
         arrow.enabled = false;
         GameObject I_dialogue;
         I_dialogue = Instantiate(dialogues[index]);
+        I_dialogue.transform.parent = transform;
         I_dialogue.SetActive(true);
         I_dialogue.GetComponent<SC_Dialogue_system>().npc = this;
         I_dialogue.GetComponent<SC_Dialogue_system>().npc_anim = animator;
@@ -147,17 +145,16 @@ public class SC_NPC : MonoBehaviour
         player.animator.SetTrigger("Idle");
 
     }
-
     public void Reset_NPC()
     {
         Invoke("Delay_Reset_NPC", 0.5f);
     }
-
     public void Delay_Reset_NPC()
     {
         can_talk = true;
         arrow.enabled = true;
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
@@ -165,8 +162,6 @@ public class SC_NPC : MonoBehaviour
             collided = true;
         }
     }
-
-
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.tag == "Player")
