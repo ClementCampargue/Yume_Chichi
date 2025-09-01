@@ -89,7 +89,9 @@ public class SC_interactive_object : MonoBehaviour
 
     void player_anim()
     {
-        if (player.transform.position.x > transform.position.x && Mathf.Abs(player.transform.position.x - transform.position.x) > Mathf.Abs(player.transform.position.y - transform.position.y))
+
+        Transform trs = transform.Find("Collider");
+        if (player.transform.position.x > trs.position.x && Mathf.Abs(player.transform.position.x - trs.position.x) > Mathf.Abs(player.transform.position.y - trs.position.y))
         {
             player.animator.SetBool("Side", true);
             player.animator.SetBool("Up", false);
@@ -102,7 +104,7 @@ public class SC_interactive_object : MonoBehaviour
             }
         }
 
-        if (player.transform.position.x < transform.position.x && Mathf.Abs(player.transform.position.x - transform.position.x) > Mathf.Abs(player.transform.position.y - transform.position.y))
+        if (player.transform.position.x < trs.position.x && Mathf.Abs(player.transform.position.x - trs.position.x) > Mathf.Abs(player.transform.position.y - trs.position.y))
         {
             player.animator.SetBool("Side", true);
             player.animator.SetBool("Up", false);
@@ -114,14 +116,14 @@ public class SC_interactive_object : MonoBehaviour
             }
         }
 
-        if (player.transform.position.y > transform.position.y && Mathf.Abs(player.transform.position.y - transform.position.y) > Mathf.Abs(player.transform.position.x - transform.position.x))
+        if (player.transform.position.y > trs.position.y && Mathf.Abs(player.transform.position.y - trs.position.y) > Mathf.Abs(player.transform.position.x - trs.position.x))
         {
             player.animator.SetBool("Side", false);
             player.animator.SetBool("Up", false);
             player.animator.SetBool("Down", true);
         }
 
-        if (player.transform.position.y < transform.position.y && Mathf.Abs(player.transform.position.y - transform.position.y) > Mathf.Abs(player.transform.position.x - transform.position.x))
+        if (player.transform.position.y < trs.position.y && Mathf.Abs(player.transform.position.y - trs.position.y) > Mathf.Abs(player.transform.position.x - trs.position.x))
         {
             player.animator.SetBool("Side", false);
             player.animator.SetBool("Up", true);

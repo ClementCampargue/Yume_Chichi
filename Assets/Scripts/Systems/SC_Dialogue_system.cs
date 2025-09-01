@@ -22,11 +22,10 @@ public class SC_Dialogue_system : MonoBehaviour
     public AudioClip[] talk_sound;
     public AnimationClip[] anims;
     public float speed;
-    public float speed_pause;
-    public float virgule_time;
-    public float point_time;
-    public float exclamation_point_time;
-    public float interrogation_point_time;
+    public float speed_pause_;
+    public float speed_pause__;
+    public float speed_pause___;
+
     private int index;
     [HideInInspector] public SC_Player_controller player;
     [HideInInspector] public Animator anim;
@@ -136,36 +135,30 @@ public class SC_Dialogue_system : MonoBehaviour
             npc_anim.Play(anims[index].name);
         }
         check =lines[index];
-        check = check.Replace("§", string.Empty);
+        check = check.Replace("%", string.Empty);
+        check = check.Replace("µ", string.Empty);
+        check = check.Replace("£", string.Empty);
 
         foreach (char c in lines[index].ToCharArray())
         {
             text_component.text += c;
-            if (text_component.text.EndsWith("§"))
+            if (text_component.text.EndsWith("µ"))
             {
                 talk_sfx.Stop();
                 text_component.text = text_component.text.Substring(0, text_component.text.Length - 1);
-                yield return new WaitForSeconds(speed_pause);
+                yield return new WaitForSeconds(speed_pause_);
             }
-            else if (text_component.text.EndsWith(","))
+            else if (text_component.text.EndsWith("£"))
             {
                 talk_sfx.Stop();
-                yield return new WaitForSeconds(virgule_time);
+                text_component.text = text_component.text.Substring(0, text_component.text.Length - 1);
+                yield return new WaitForSeconds(speed_pause__);
             }
-            else if (text_component.text.EndsWith("."))
+            else if (text_component.text.EndsWith("%"))
             {
                 talk_sfx.Stop();
-                yield return new WaitForSeconds(point_time);
-            }
-            else if (text_component.text.EndsWith("?"))
-            {
-                talk_sfx.Stop();
-                yield return new WaitForSeconds(interrogation_point_time);
-            }
-            else if (text_component.text.EndsWith("!"))
-            {
-                talk_sfx.Stop();
-                yield return new WaitForSeconds(exclamation_point_time);
+                text_component.text = text_component.text.Substring(0, text_component.text.Length - 1);
+                yield return new WaitForSeconds(speed_pause___);
             }
             else
             {
@@ -217,7 +210,7 @@ public class SC_Dialogue_system : MonoBehaviour
         { 
             npc_anim.Play(anims[index].name);
         }
-        if (portraits.Count > 1)
+        if (portraits.Count > 0)
         {
             prt_spr.sprite = portraits[index];
         }
@@ -334,7 +327,7 @@ public class SC_Dialogue_system : MonoBehaviour
         if(index < lines.Length)
         {
             Debug.Log(portraits[index].ToString());
-            if (portraits[index -1] != portraits[index])
+            if (character_names[index -1] != character_names[index])
             {
                 anim.ResetTrigger("no_character_start");
                 if (portraits[index].ToString() !="null")
