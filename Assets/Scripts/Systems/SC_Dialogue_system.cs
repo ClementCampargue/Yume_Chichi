@@ -18,7 +18,7 @@ public class SC_Dialogue_system : MonoBehaviour
     [HideInInspector] public Transform camtarget;
     public string[] character_names;
     public string[] lines;
-    public Sprite[] portraits;
+    public List<Sprite> portraits = new List<Sprite>();
     public AudioClip[] talk_sound;
     public AnimationClip[] anims;
     public float speed;
@@ -39,7 +39,7 @@ public class SC_Dialogue_system : MonoBehaviour
     private AudioSource talk_sfx;
     private AudioSource confirm_sfx;
 
-    private List<GameObject> choices;
+    private List<GameObject> choices = new List<GameObject>();
     private GameObject choices_obj;
 
     private bool child_dialogue;
@@ -218,13 +218,18 @@ public class SC_Dialogue_system : MonoBehaviour
         { 
             npc_anim.Play(anims[index].name);
         }
-        if (portraits.Length > 1)
+        if (portraits.Count > 1)
         {
             prt_spr.sprite = portraits[index];
         }
         talk_sfx.clip = talk_sound[index];
         character_component.text = character_names[index];
         camtarget.position = transform.position;
+        if (portraits[0].ToString() == "null")
+        {
+            anim.SetTrigger("Next_nocharacter");
+            Invoke("start_typing", 0.5f);
+        }
     }
 
     public void start_typing()
@@ -253,7 +258,7 @@ public class SC_Dialogue_system : MonoBehaviour
                 child.GetComponent<SC_Dialogue_system>().talk_sfx = talk_sfx;
                 child.GetComponent<SC_Dialogue_system>().cursor = cursor;
                 child.gameObject.SetActive(true);
-                if (child.GetComponent<SC_Dialogue_system>().portraits[0] != null)
+                if (portraits[index].ToString() != "null")
                 {
                     anim.SetTrigger("Next");
                 }
@@ -269,7 +274,14 @@ public class SC_Dialogue_system : MonoBehaviour
         {
             index = 0;
             player.can_act = true;
-            anim.SetTrigger("disable");
+            if (portraits[index].ToString() == "null") 
+            {
+                anim.SetTrigger("disable_no_character");
+            }
+            else
+            {
+                anim.SetTrigger("disable");
+            }
 
         }
 
@@ -319,16 +331,16 @@ public class SC_Dialogue_system : MonoBehaviour
 
         if(index < lines.Length)
         {
+            Debug.Log(portraits[index].ToString());
             if (portraits[index -1] != portraits[index])
             {
-                if (portraits[index].name == string.Empty)
+                if (portraits[index].ToString() !="null")
                 {
                     anim.SetTrigger("Next");
                 }
                 else
                 {
-                    anim.SetTrigger("Next");
-                    // anim.SetTrigger("Next_nocharacter");
+                    anim.SetTrigger("Next_nocharacter");
                 }
             }
         }
@@ -348,7 +360,7 @@ public class SC_Dialogue_system : MonoBehaviour
         {
             npc_anim.Play(anims[index].name);
         }
-        if (portraits.Length > 1)
+        if (portraits.Count > 1)
         {
             prt_spr.sprite = portraits[index];
         }
