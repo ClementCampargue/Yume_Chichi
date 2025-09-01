@@ -69,7 +69,7 @@ public class SC_Dialogue_system : MonoBehaviour
             {
                 if (text_component.text == check)
                 {
-                    Invoke("update_visuals", 0.1f);
+                    Invoke("update_visuals", 0.3f);
                     confirm_sfx.Play();
                 }
                 else
