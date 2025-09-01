@@ -2588,11 +2588,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 535416387345148538, guid: a07913fab27504f4eb3d32518b920809, type: 3}
       propertyPath: anims.Array.size
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 535416387345148538, guid: a07913fab27504f4eb3d32518b920809, type: 3}
       propertyPath: lines.Array.size
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 535416387345148538, guid: a07913fab27504f4eb3d32518b920809, type: 3}
       propertyPath: 'lines.Array.data[0]'
@@ -2600,23 +2600,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 535416387345148538, guid: a07913fab27504f4eb3d32518b920809, type: 3}
       propertyPath: 'lines.Array.data[1]'
-      value: la bise
+      value: la bisela bisela bisela bisela bise
       objectReference: {fileID: 0}
     - target: {fileID: 535416387345148538, guid: a07913fab27504f4eb3d32518b920809, type: 3}
       propertyPath: 'lines.Array.data[2]'
-      value: la bise
+      value: la bisela bisela bisela bise
       objectReference: {fileID: 0}
     - target: {fileID: 535416387345148538, guid: a07913fab27504f4eb3d32518b920809, type: 3}
       propertyPath: 'lines.Array.data[3]'
-      value: la bise
+      value: la bisela bisela bisela bisela bisela bisela bise
+      objectReference: {fileID: 0}
+    - target: {fileID: 535416387345148538, guid: a07913fab27504f4eb3d32518b920809, type: 3}
+      propertyPath: 'lines.Array.data[4]'
+      value: la bisela bisela bisela bisela bisela bisela bise
+      objectReference: {fileID: 0}
+    - target: {fileID: 535416387345148538, guid: a07913fab27504f4eb3d32518b920809, type: 3}
+      propertyPath: 'lines.Array.data[5]'
+      value: la bisela bisela bisela bisela bisela bisela bise
       objectReference: {fileID: 0}
     - target: {fileID: 535416387345148538, guid: a07913fab27504f4eb3d32518b920809, type: 3}
       propertyPath: portraits.Array.size
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 535416387345148538, guid: a07913fab27504f4eb3d32518b920809, type: 3}
       propertyPath: talk_sound.Array.size
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 535416387345148538, guid: a07913fab27504f4eb3d32518b920809, type: 3}
       propertyPath: 'portraits.Array.data[0]'
@@ -2629,14 +2637,22 @@ PrefabInstance:
     - target: {fileID: 535416387345148538, guid: a07913fab27504f4eb3d32518b920809, type: 3}
       propertyPath: 'portraits.Array.data[2]'
       value: 
-      objectReference: {fileID: 1933082729, guid: beb63134d2a6a644a92a34cf7795fb3a, type: 3}
+      objectReference: {fileID: 7357123456376359846, guid: 82985de23e6ddc04185184cabda6ce80, type: 3}
     - target: {fileID: 535416387345148538, guid: a07913fab27504f4eb3d32518b920809, type: 3}
       propertyPath: 'portraits.Array.data[3]'
+      value: 
+      objectReference: {fileID: 7357123456376359846, guid: 82985de23e6ddc04185184cabda6ce80, type: 3}
+    - target: {fileID: 535416387345148538, guid: a07913fab27504f4eb3d32518b920809, type: 3}
+      propertyPath: 'portraits.Array.data[4]'
+      value: 
+      objectReference: {fileID: 7357123456376359846, guid: 82985de23e6ddc04185184cabda6ce80, type: 3}
+    - target: {fileID: 535416387345148538, guid: a07913fab27504f4eb3d32518b920809, type: 3}
+      propertyPath: 'portraits.Array.data[5]'
       value: 
       objectReference: {fileID: 1933082729, guid: beb63134d2a6a644a92a34cf7795fb3a, type: 3}
     - target: {fileID: 535416387345148538, guid: a07913fab27504f4eb3d32518b920809, type: 3}
       propertyPath: character_names.Array.size
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 535416387345148538, guid: a07913fab27504f4eb3d32518b920809, type: 3}
       propertyPath: 'character_names.Array.data[0]'
@@ -2652,6 +2668,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 535416387345148538, guid: a07913fab27504f4eb3d32518b920809, type: 3}
       propertyPath: 'character_names.Array.data[3]'
+      value: ef
+      objectReference: {fileID: 0}
+    - target: {fileID: 535416387345148538, guid: a07913fab27504f4eb3d32518b920809, type: 3}
+      propertyPath: 'character_names.Array.data[4]'
+      value: ef
+      objectReference: {fileID: 0}
+    - target: {fileID: 535416387345148538, guid: a07913fab27504f4eb3d32518b920809, type: 3}
+      propertyPath: 'character_names.Array.data[5]'
       value: ef
       objectReference: {fileID: 0}
     - target: {fileID: 1109632291042748416, guid: a07913fab27504f4eb3d32518b920809, type: 3}

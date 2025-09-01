@@ -70,7 +70,7 @@ public class SC_Dialogue_system : MonoBehaviour
             {
                 if (text_component.text == check)
                 {
-                    NextLine();
+                    Invoke("update_visuals", 0.1f);
                     confirm_sfx.Play();
                 }
                 else
@@ -116,19 +116,7 @@ public class SC_Dialogue_system : MonoBehaviour
     void NextLine()
     {
         cursor.SetActive(false);
-        if (index < portraits.Length)
-        {
-            Debug.Log(portraits[index]);
-            if (portraits[index].name == string.Empty)
-            {
-                anim.SetTrigger("Next");
-            }
-            else
-            {
-                anim.SetTrigger("Next");
-                // anim.SetTrigger("Next_nocharacter");
-            }
-        }
+
         if (index < lines.Length - 1)
         {
             index++;
@@ -218,7 +206,7 @@ public class SC_Dialogue_system : MonoBehaviour
             {
                 anim = GetComponent<Animator>();
             }
-            prt_spr = transform.Find("Pivot").transform.Find("Portrait").GetComponent<Image>();
+            prt_spr = transform.Find("Portrait").GetComponent<Image>();
             text_component = transform.Find("Pivot").transform.Find("Text").GetComponent<TextMeshProUGUI>();
             character_component = transform.Find("Pivot").transform.Find("Character_name").GetComponent<TextMeshProUGUI>();
             confirm_sfx = transform.Find("Audio").transform.Find("Confirm_sound").GetComponent<AudioSource>();
@@ -240,7 +228,6 @@ public class SC_Dialogue_system : MonoBehaviour
         }
         talk_sfx.clip = talk_sound[index];
         character_component.text = character_names[index];
-
         camtarget.position = transform.position;
     }
 
@@ -328,5 +315,50 @@ public class SC_Dialogue_system : MonoBehaviour
         choices[choice_index].GetComponent<SC_Dialogue_system>().cursor = cursor;
         choices[choice_index].SetActive(true);
         this.enabled = false;
+    }
+
+    public void update_visuals()
+    {
+        NextLine();
+
+        if(index < lines.Length)
+        {
+            if (portraits[index -1] != portraits[index])
+            {
+                if (portraits[index].name == string.Empty)
+                {
+                    anim.SetTrigger("Next");
+                }
+                else
+                {
+                    anim.SetTrigger("Next");
+                    // anim.SetTrigger("Next_nocharacter");
+                }
+            }
+        }
+        else
+        {
+            if (portraits[index].name == string.Empty)
+            {
+                anim.SetTrigger("Next");
+            }
+            else
+            {
+                anim.SetTrigger("Next");
+                // anim.SetTrigger("Next_nocharacter");
+            }
+        }
+        if (anims[index] != null)
+        {
+            npc_anim.Play(anims[index].name);
+        }
+        if (portraits.Length > 1)
+        {
+            prt_spr.sprite = portraits[index];
+        }
+        talk_sfx.clip = talk_sound[index];
+        character_component.text = character_names[index];
+        camtarget.position = transform.position;
+ 
     }
 }

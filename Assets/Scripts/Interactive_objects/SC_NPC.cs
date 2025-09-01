@@ -16,7 +16,7 @@ public class SC_NPC : MonoBehaviour
     private Animator animator;
 
     private int index;
-    private List<GameObject> dialogues;
+    private List<GameObject> dialogues = new List<GameObject>(); 
 
     public List<string> locked_dialogue_name;
     public bool lock_priority;
@@ -45,7 +45,7 @@ public class SC_NPC : MonoBehaviour
                             dialogues.Add(child.gameObject);
                         }
 
-                    }
+                    } 
                 }
             }
         }
