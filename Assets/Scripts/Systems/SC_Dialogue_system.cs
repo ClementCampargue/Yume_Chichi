@@ -50,7 +50,7 @@ public class SC_Dialogue_system : MonoBehaviour
     private bool last_dialoguie;
     private bool end;
 
-    public SC_effect_test test;
+    public SC_text_effect_master test;
     private bool effect_on;
 
     void Start()
@@ -377,6 +377,7 @@ public class SC_Dialogue_system : MonoBehaviour
                 last_dialoguie = false;
                 text_component.text = string.Empty;
                 child.GetComponent<SC_Dialogue_system>().child_dialogue = true;
+                child.GetComponent<SC_text_effect_master>().textMeshPro = test.textMeshPro;
                 child.GetComponent<SC_Dialogue_system>().npc_anim = npc_anim;
                 child.GetComponent<SC_Dialogue_system>().anim = anim;
                 child.GetComponent<SC_Dialogue_system>().prt_spr = prt_spr;
@@ -413,6 +414,8 @@ public class SC_Dialogue_system : MonoBehaviour
                 anim.SetTrigger("disable");
             }
         }
+        Destroy(test);
+
     }
 
     public void Destroy_dialogue()
@@ -438,6 +441,7 @@ public class SC_Dialogue_system : MonoBehaviour
     }
     void choosen_delay()
     {
+        choices[choice_index].GetComponent<SC_text_effect_master>().textMeshPro = test.textMeshPro;
         choices[choice_index].GetComponent<SC_Dialogue_system>().child_dialogue = true;
         choices[choice_index].GetComponent<SC_Dialogue_system>().npc_anim = npc_anim;
         choices[choice_index].GetComponent<SC_Dialogue_system>().anim = anim;

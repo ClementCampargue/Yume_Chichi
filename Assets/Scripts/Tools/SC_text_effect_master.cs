@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 
-public class SC_effect_test : MonoBehaviour
+public class SC_text_effect_master : MonoBehaviour
 {
     public TMP_Text textMeshPro;
     [HideInInspector]public List<int> targetLetters = new List<int>();
