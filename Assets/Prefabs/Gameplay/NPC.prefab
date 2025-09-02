@@ -129,6 +129,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collided: 0
+  locked_dialogue_name: []
+  lock_priority: 0
 --- !u!95 &3140902787304398995
 Animator:
   serializedVersion: 7
@@ -423,7 +425,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2421558527339608622, guid: 0e0acef6cc527ed4dac1affb0bc29174, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

@@ -506,6 +506,7 @@ GameObject:
   - component: {fileID: 2896758239553886616}
   - component: {fileID: 6268187768607584424}
   - component: {fileID: 3623361269569617023}
+  - component: {fileID: 319889221543264710}
   m_Layer: 5
   m_Name: Dialogue_master
   m_TagString: Untagged
@@ -631,9 +632,11 @@ MonoBehaviour:
   speed_pause_: 0.1
   speed_pause__: 0.2
   speed_pause___: 0.5
+  index: 0
   player: {fileID: 0}
   anim: {fileID: 0}
   cursor: {fileID: 0}
+  test: {fileID: 319889221543264710}
 --- !u!95 &3623361269569617023
 Animator:
   serializedVersion: 7
@@ -656,6 +659,25 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &319889221543264710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5117641935963147062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5261b8e6d4bd4eb419d198dc0b51dbd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMeshPro: {fileID: 8481065111834073677}
+  targetLetters: 
+  amplitude: 1
+  frequency: 10
+  character_effect_start: <
+  character_effect_end: '>'
+  coroutineStarted: 0
 --- !u!1 &5148253983342364261
 GameObject:
   m_ObjectHideFlags: 0
@@ -912,7 +934,6 @@ GameObject:
   - component: {fileID: 6102662412605138868}
   - component: {fileID: 6325002710349671898}
   - component: {fileID: 8481065111834073677}
-  - component: {fileID: 3127598480786615514}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -967,7 +988,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: sefrgthygjgtrfedzdefrgnrfeazdfgbngfre
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1d25028ae4696ad4cb8482d2cc040508, type: 2}
   m_sharedMaterial: {fileID: 7218572282978775342, guid: 1d25028ae4696ad4cb8482d2cc040508, type: 2}
@@ -1038,21 +1059,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &3127598480786615514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7504976748150517155}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6673e4d30ebd83479c2cc3a20e7dc4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  amplitude: 5
-  frequency: 2
-  speed: 2
 --- !u!1 &7842244050520334315
 GameObject:
   m_ObjectHideFlags: 0
