@@ -27,6 +27,8 @@ public class SC_text_effect_master : MonoBehaviour
     [Header("Color")]
     public bool Color_;
     public Color color;
+    public int glow_speed;
+    public Color color_glow;
 
     private TMP_TextInfo textInfo;
     private Vector3[][] originalVertices;
@@ -239,13 +241,13 @@ public class SC_text_effect_master : MonoBehaviour
                         int vertexIndex = charInfo.vertexIndex;
 
                         Color32[] colors = textInfo.meshInfo[materialIndex].colors32;
+                        float value = (Mathf.Sin(Time.time * glow_speed) + 1f) / 2f;
+                        colors[vertexIndex + 0] = Color.Lerp(color, color_glow, value) ;
+                        colors[vertexIndex + 1] = Color.Lerp(color, color_glow, value);
+                        colors[vertexIndex + 2] = Color.Lerp(color, color_glow, value);
+                        colors[vertexIndex + 3] = Color.Lerp(color, color_glow, value);
 
-                        colors[vertexIndex + 0] = color;
-                        colors[vertexIndex + 1] = color;
-                        colors[vertexIndex + 2] = color;
-                        colors[vertexIndex + 3] = color;
-
-                     }
+                    }
                 }
 
                 for (int i = 0; i < textInfo.meshInfo.Length; i++)
@@ -254,6 +256,10 @@ public class SC_text_effect_master : MonoBehaviour
                     textMeshPro.UpdateGeometry(textInfo.meshInfo[i].mesh, i);
                 }
 
+                yield return null;
+            }
+            else
+            {
                 yield return null;
             }
 
