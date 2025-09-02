@@ -673,11 +673,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMeshPro: {fileID: 8481065111834073677}
   targetLetters: 
+  coroutineStarted: 0
+  movement: 0
   amplitude: 1
   frequency: 10
+  ondulation: 0
+  ondulation_amplitude: 2
+  ondulation_frequency: 5
+  Scale: 0
+  size: 0.1
+  frequency_: 10
   character_effect_start: <
   character_effect_end: '>'
-  coroutineStarted: 0
 --- !u!1 &5148253983342364261
 GameObject:
   m_ObjectHideFlags: 0
