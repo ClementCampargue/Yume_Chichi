@@ -266,14 +266,12 @@ public class SC_Dialogue_system : MonoBehaviour
                     effect_on =true;
 
                     text_component.text = text_component.text.Substring(0, text_component.text.Length - 1);
-                    yield return new WaitForSeconds(speed_pause___);
                 }
                 else if (text_component.text.EndsWith(test.character_effect_end))
                 {
                     effect_on =false;
 
                     text_component.text = text_component.text.Substring(0, text_component.text.Length - 1);
-                    yield return new WaitForSeconds(speed_pause___);
                 }
 
 
