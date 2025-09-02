@@ -676,13 +676,17 @@ MonoBehaviour:
   coroutineStarted: 0
   movement: 0
   amplitude: 1
-  frequency: 10
+  frequency: 0.5
   ondulation: 0
   ondulation_amplitude: 2
   ondulation_frequency: 5
   Scale: 0
   size: 0.1
   frequency_: 10
+  Color_: 0
+  color: {r: 0, g: 0, b: 0, a: 0}
+  glow_speed: 0
+  color_glow: {r: 0, g: 0, b: 0, a: 0}
   character_effect_start: <
   character_effect_end: '>'
 --- !u!1 &5148253983342364261

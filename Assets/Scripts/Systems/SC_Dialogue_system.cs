@@ -1,13 +1,8 @@
-using NUnit.Framework.Internal;
 using System.Collections;
 using System.Collections.Generic;
-using System.Net.NetworkInformation;
-using System.Runtime.InteropServices;
-using System.Security.Cryptography.X509Certificates;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEngine.Rendering.DebugUI;
 
 public class SC_Dialogue_system : MonoBehaviour
 {
@@ -51,7 +46,6 @@ public class SC_Dialogue_system : MonoBehaviour
     private bool end;
 
     public SC_text_effect_master test;
-    private bool effect_on;
 
     void Start()
     {
@@ -73,9 +67,9 @@ public class SC_Dialogue_system : MonoBehaviour
             test.reset_();
         }
 
-        string text2 = lines[index].Replace("%", "").Replace("£", "").Replace("µ", "").Replace(test.character_effect_start, "").Replace(test.character_effect_end, "");
-        string text = text_component.text.Replace("\n", "").Replace("\r", "").Replace(" ", "").Replace(test.character_effect_start, "").Replace(test.character_effect_end, "");
-        check = check.Replace("\n", "").Replace("\r", "").Replace(" ", "").Replace(test.character_effect_start, "").Replace(test.character_effect_end, "");
+        string text2 = lines[index].Replace("\n", "").Replace("\r", "").Replace(test.color_character_effect_start, "").Replace(test.color_character_effect_end, "").Replace(test.scale_character_effect_start, "").Replace(test.scale_character_effect_end, "").Replace(test.ondulation_character_effect_start, "").Replace(test.ondulation_character_effect_end, "").Replace(test.movement_character_effect_start, "").Replace(test.movement_character_effect_end, "");
+        string text = text_component.text.Replace("\n", "").Replace("\r", "").Replace(" ", "").Replace(test.color_character_effect_start, "").Replace(test.color_character_effect_end, "").Replace(test.scale_character_effect_start, "").Replace(test.scale_character_effect_end, "").Replace(test.ondulation_character_effect_start, "").Replace(test.ondulation_character_effect_end, "").Replace(test.movement_character_effect_start, "").Replace(test.movement_character_effect_end, "");
+        check = check.Replace("\n", "").Replace("\r", "").Replace(" ", "").Replace(test.color_character_effect_start, "").Replace(test.color_character_effect_end, "").Replace(test.scale_character_effect_start, "").Replace(test.scale_character_effect_end, "").Replace(test.ondulation_character_effect_start, "").Replace(test.ondulation_character_effect_end, "").Replace(test.movement_character_effect_start, "").Replace(test.movement_character_effect_end, "");
 
 
         if (Input.GetButtonDown("Fire1"))
@@ -222,7 +216,14 @@ public class SC_Dialogue_system : MonoBehaviour
         check = check.Replace("%", string.Empty);
         check = check.Replace("µ", string.Empty);
         check = check.Replace("£", string.Empty);
-        check = check.Replace(test.character_effect_start, "");
+        check = check.Replace(test.color_character_effect_start, "");
+        check = check.Replace(test.color_character_effect_end, "");
+        check = check.Replace(test.movement_character_effect_start, "");
+        check = check.Replace(test.movement_character_effect_end, "");
+        check = check.Replace(test.ondulation_character_effect_start, "");
+        check = check.Replace(test.ondulation_character_effect_end, "");
+        check = check.Replace(test.scale_character_effect_start, "");
+        check = check.Replace(test.scale_character_effect_start, "");
 
         text_component.text = string.Empty;
         string[] words = lines[index].Split(' ');
@@ -261,15 +262,51 @@ public class SC_Dialogue_system : MonoBehaviour
                     text_component.text = text_component.text.Substring(0, text_component.text.Length - 1);
                     yield return new WaitForSeconds(speed_pause___);
                 }
-                else if (text_component.text.EndsWith(test.character_effect_start))
+                else if (text_component.text.EndsWith(test.movement_character_effect_start))
                 {
-                    effect_on =true;
+                    test.movement = true;
 
                     text_component.text = text_component.text.Substring(0, text_component.text.Length - 1);
                 }
-                else if (text_component.text.EndsWith(test.character_effect_end))
+                else if (text_component.text.EndsWith(test.movement_character_effect_end))
                 {
-                    effect_on =false;
+                    test.movement = false;
+
+                    text_component.text = text_component.text.Substring(0, text_component.text.Length - 1);
+                }
+                else if (text_component.text.EndsWith(test.ondulation_character_effect_start))
+                {
+                    test.ondulation = true;
+
+                    text_component.text = text_component.text.Substring(0, text_component.text.Length - 1);
+                }
+                else if (text_component.text.EndsWith(test.ondulation_character_effect_end))
+                {
+                    test.ondulation = false;
+
+                    text_component.text = text_component.text.Substring(0, text_component.text.Length - 1);
+                }
+                else if (text_component.text.EndsWith(test.scale_character_effect_start))
+                {
+                    test.Scale = true;
+
+                    text_component.text = text_component.text.Substring(0, text_component.text.Length - 1);
+                }
+                else if (text_component.text.EndsWith(test.scale_character_effect_end))
+                {
+                    test.Scale = false;
+
+                    text_component.text = text_component.text.Substring(0, text_component.text.Length - 1);
+                }
+                else if (text_component.text.EndsWith(test.color_character_effect_start))
+                {
+                    test.Color_ = true;
+
+                    text_component.text = text_component.text.Substring(0, text_component.text.Length - 1);
+                }
+                else if (text_component.text.EndsWith(test.color_character_effect_end))
+                {
+                    test.Color_ = false;
 
                     text_component.text = text_component.text.Substring(0, text_component.text.Length - 1);
                 }
@@ -283,34 +320,67 @@ public class SC_Dialogue_system : MonoBehaviour
                         talk_sfx.Play();
                     }
                 }
-                if (effect_on)
+                if (test.movement)
                 {
                     if (c.ToString() != "")
                     {
                         int charIndex = text_component.text.Length;
 
-                        test.targetLetters.Add(charIndex);
+                        test.targetLetters_movement.Add(charIndex);
+
+                        test.RefreshText();
+                    }
+                }
+                else if (test.ondulation)
+                {
+                    if (c.ToString() != "")
+                    {
+                        int charIndex = text_component.text.Length;
+
+                        test.targetLetters_ondulation.Add(charIndex);
+
+                        test.RefreshText();
+                    }
+                }
+                else if (test.Scale)
+                {
+                    if (c.ToString() != "")
+                    {
+                        int charIndex = text_component.text.Length;
+
+                        test.targetLetters_scale.Add(charIndex);
+
+                        test.RefreshText();
+                    }
+                }
+                else if (test.Color_)
+                {
+                    if (c.ToString() != "")
+                    {
+                        int charIndex = text_component.text.Length;
+
+                        test.targetLetters_color.Add(charIndex);
 
                         test.RefreshText();
                     }
                 }
                 yield return new WaitForSeconds(speed);
 
+
             }
 
-        }
-
-        if (cursor.enabled)
-        {
-            cursor.SetBool("On", true);
-        }
-        else
-        {
-            cursor.SetBool("On", true);
-            cursor.enabled = true;
-        }
+            if (cursor.enabled)
+            {
+                cursor.SetBool("On", true);
+            }
+            else
+            {
+                cursor.SetBool("On", true);
+                cursor.enabled = true;
+            }
 
 
+        }
     }
 
     public void Start_dialogue()
@@ -474,33 +544,109 @@ public class SC_Dialogue_system : MonoBehaviour
 
     public void check_effect()
     {
-         string testt = lines[index];
-        effect_on = false;
+        string testt = lines[index];
+        test.movement = false;
+        test.Scale = false;
+        test.ondulation = false;
+        test.Color_ = false;
+
         for (int i = 0; i < text_component.text.Length; i++)
         {
-            if (testt[i+1].ToString() == test.character_effect_start)
+            if (testt[i+1].ToString() == test.movement_character_effect_start)
             {
-                effect_on = true;
+                test.movement = true;
                 testt = testt.Remove(i+1,1);
 
             }
-            else if (testt[i].ToString() == test.character_effect_end)
+            else if (testt[i].ToString() == test.movement_character_effect_end)
             {
-                effect_on = false;
+                test.movement = false;
+                testt = testt.Remove(i, 1);
+
+            }
+            else if (testt[i].ToString() == test.scale_character_effect_start)
+            {
+                test.Scale = true;
+                testt = testt.Remove(i, 1);
+
+            }
+            else if (testt[i].ToString() == test.scale_character_effect_end)
+            {
+                test.Scale = false;
+                testt = testt.Remove(i, 1);
+
+            }
+            else if (testt[i].ToString() == test.ondulation_character_effect_start)
+            {
+                test.ondulation = true;
+                testt = testt.Remove(i, 1);
+
+            }
+            else if (testt[i].ToString() == test.ondulation_character_effect_end)
+            {
+                test.ondulation = false;
+                testt = testt.Remove(i, 1);
+
+            }
+            else if (testt[i].ToString() == test.color_character_effect_start)
+            {
+                test.Color_ = true;
+                testt = testt.Remove(i, 1);
+
+            }
+            else if (testt[i].ToString() == test.color_character_effect_end)
+            {
+                test.Color_ = false;
                 testt = testt.Remove(i, 1);
 
             }
             else
             {
                 Debug.Log(testt);
-                if (effect_on)
+                if (test.movement)
                 {
                     if (testt[i].ToString() != "")
                     {
 
                         int charIndex = i;
 
-                        test.targetLetters.Add(charIndex);
+                        test.targetLetters_movement.Add(charIndex);
+
+                        test.RefreshText();
+                    }
+                }
+                else if (test.ondulation)
+                {
+                    if (testt[i].ToString() != "")
+                    {
+
+                        int charIndex = i;
+
+                        test.targetLetters_ondulation.Add(charIndex);
+
+                        test.RefreshText();
+                    }
+                }
+                else if (test.Scale)
+                {
+                    if (testt[i].ToString() != "")
+                    {
+
+                        int charIndex = i;
+
+                        test.targetLetters_scale.Add(charIndex);
+
+                        test.RefreshText();
+                    }
+                }
+                else if (test.Color_)
+                {
+                    if (testt[i].ToString() != "")
+                    {
+
+                        int charIndex = i;
+
+                        test.targetLetters_color.Add(charIndex);
 
                         test.RefreshText();
                     }
