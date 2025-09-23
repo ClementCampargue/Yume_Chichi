@@ -672,7 +672,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textMeshPro: {fileID: 8481065111834073677}
-  targetLetters: 
+  targetLetters_movement: 
+  targetLetters_ondulation: 
+  targetLetters_scale: 
+  targetLetters_color: 
   coroutineStarted: 0
   movement: 0
   amplitude: 1
@@ -687,8 +690,14 @@ MonoBehaviour:
   color: {r: 0, g: 0, b: 0, a: 0}
   glow_speed: 0
   color_glow: {r: 0, g: 0, b: 0, a: 0}
-  character_effect_start: <
-  character_effect_end: '>'
+  movement_character_effect_start: <
+  movement_character_effect_end: '>'
+  ondulation_character_effect_start: '['
+  ondulation_character_effect_end: ']'
+  scale_character_effect_start: '{'
+  scale_character_effect_end: '}'
+  color_character_effect_start: $
+  color_character_effect_end: "\xA3"
 --- !u!1 &5148253983342364261
 GameObject:
   m_ObjectHideFlags: 0

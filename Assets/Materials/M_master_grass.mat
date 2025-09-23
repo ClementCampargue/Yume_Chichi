@@ -36,6 +36,14 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_72326ef72c704c399c7f3937b4c9b800_Texture_1_Texture2D:
+        m_Texture: {fileID: 8400000, guid: 73f31d1e31a346849b9a6d27235a9e38, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_cb2bf67281574265bb07ee4c2a42bc30_Texture_1_Texture2D:
+        m_Texture: {fileID: 8400000, guid: 73f31d1e31a346849b9a6d27235a9e38, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -50,6 +58,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Affect_distance: 0.89
+    - _Affected_by_player: 1
     - _Base_Height: 0
     - _Bend: 2.27
     - _ColorMask: 15
@@ -61,9 +71,12 @@ Material:
     - _Noise_tiling: 37.74
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _Reflection_on: 0
+    - _Rotation_amount: 0.1
     - _Rotation_on: 1
     - _Rotation_power: 0.32
     - _Rotation_speed: 1.23
+    - _Scale: 0
     - _Speed: 0
     - _Stencil: 0
     - _StencilComp: 8
@@ -80,6 +93,8 @@ Material:
     - _Wind_speed: 1
     m_Colors:
     - _ClipRect: {r: 0, g: 0, b: 0, a: 0}
+    - _Offset: {r: 0, g: 0, b: 0, a: 0}
+    - _Pos: {r: 5.51, g: 0.2, b: 0.29, a: 0}
     - _Rotation_pivot: {r: 0, g: 0, b: 0, a: 0}
     - _Scroll_speed: {r: 1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
