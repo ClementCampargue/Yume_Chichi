@@ -6,11 +6,13 @@ public class SC_game_master : MonoBehaviour
     public bool debug;
     public GameObject debugger;
     public TextMeshProUGUI fps_text;
+    public TextMeshProUGUI save_slot;
 
     private float polling = 3f;
     private float time;
     private int framecount;
     public int targetfps =240;
+
 
    [HideInInspector] public string previous_scene;
     void Awake()
@@ -27,6 +29,7 @@ public class SC_game_master : MonoBehaviour
             Debug.unityLogger.logEnabled = false;
             Destroy(debugger);
         }
+        save_slot.text = PlayerPrefs.GetInt("Save").ToString();
     }
     void Update()
     {

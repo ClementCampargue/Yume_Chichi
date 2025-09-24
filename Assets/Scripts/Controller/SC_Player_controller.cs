@@ -9,9 +9,12 @@ public class SC_Player_controller : MonoBehaviour
     public Rigidbody2D rb;
     public bool facing_right;
     [HideInInspector] public float stair_speed;
+    private Vector2 respawn_coordinates;
 
+    public bool sleeping;
     void Start()
     {
+        respawn_coordinates = new Vector2(PlayerPrefs.GetFloat("Respawn_x" + PlayerPrefs.GetInt("Save")), PlayerPrefs.GetFloat("Respawn_y" + PlayerPrefs.GetInt("Save")));
         can_act = true;
         facing_right = true;
     }
@@ -23,6 +26,25 @@ public class SC_Player_controller : MonoBehaviour
         {
             check_movement();
             apply_movement();
+            check_input();
+        }
+    }
+    private void check_input()
+    {
+        if (Input.GetButtonDown("wake_up"))
+        {
+            if (sleeping)
+            {
+                wake_up();
+            }
+            else
+            {
+                go_back_to_sleep();
+            }
+        }
+        if (Input.GetButtonDown("Action"))
+        {
+            perform_action();
         }
     }
 
@@ -121,6 +143,21 @@ public class SC_Player_controller : MonoBehaviour
         transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
     }
 
+    void perform_action()
+    {
 
+    }
+
+    void wake_up()
+    {
+        PlayerPrefs.SetFloat("Respawn_x" + PlayerPrefs.GetInt("Save"), transform.position.x);
+        PlayerPrefs.SetFloat("Respawn_y" + PlayerPrefs.GetInt("Save"), transform.position.y);
+        respawn_coordinates = transform.position;
+    }
+
+    void go_back_to_sleep()
+    {
+
+    }
 
 }

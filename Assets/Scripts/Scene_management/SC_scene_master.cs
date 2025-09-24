@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SC_scene_master : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class SC_scene_master : MonoBehaviour
 
     void Start()
     {
+        PlayerPrefs.SetString("Scene" + PlayerPrefs.GetInt("Save"), SceneManager.GetActiveScene().name );
+
         Instantiate(vignette_start);
         for (int i = 0; i < Music_and_ambiances.Count; i++)
         {
@@ -21,7 +24,7 @@ public class SC_scene_master : MonoBehaviour
         }
         cam_follow =GameObject.Find("MAIN_CAMERA").GetComponent<SC_Player_follow>();
         player = GameObject.Find("Player").transform;
-
+        
     }
 
     private void Update()

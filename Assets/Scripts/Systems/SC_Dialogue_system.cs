@@ -67,9 +67,9 @@ public class SC_Dialogue_system : MonoBehaviour
             test.reset_();
         }
 
-        string text2 = lines[index].Replace("\n", "").Replace("\r", "").Replace(test.color_character_effect_start, "").Replace(test.color_character_effect_end, "").Replace(test.scale_character_effect_start, "").Replace(test.scale_character_effect_end, "").Replace(test.ondulation_character_effect_start, "").Replace(test.ondulation_character_effect_end, "").Replace(test.movement_character_effect_start, "").Replace(test.movement_character_effect_end, "");
-        string text = text_component.text.Replace("\n", "").Replace("\r", "").Replace(" ", "").Replace(test.color_character_effect_start, "").Replace(test.color_character_effect_end, "").Replace(test.scale_character_effect_start, "").Replace(test.scale_character_effect_end, "").Replace(test.ondulation_character_effect_start, "").Replace(test.ondulation_character_effect_end, "").Replace(test.movement_character_effect_start, "").Replace(test.movement_character_effect_end, "");
-        check = check.Replace("\n", "").Replace("\r", "").Replace(" ", "").Replace(test.color_character_effect_start, "").Replace(test.color_character_effect_end, "").Replace(test.scale_character_effect_start, "").Replace(test.scale_character_effect_end, "").Replace(test.ondulation_character_effect_start, "").Replace(test.ondulation_character_effect_end, "").Replace(test.movement_character_effect_start, "").Replace(test.movement_character_effect_end, "");
+        string text2 = lines[index].Replace("\n", "").Replace("\r", "").Replace(test.color_character_effect_start, "").Replace(test.color_character_effect_end, "").Replace(test.scale_character_effect_start, "").Replace(test.scale_character_effect_end, "").Replace(test.ondulation_character_effect_start, "").Replace(test.ondulation_character_effect_end, "").Replace(test.movement_character_effect_start, "").Replace(test.movement_character_effect_end, "").Replace("µ", "").Replace("£", "").Replace("%", "");
+        string text = text_component.text.Replace("\n", "").Replace("\r", "").Replace(" ", "").Replace(test.color_character_effect_start, "").Replace(test.color_character_effect_end, "").Replace(test.scale_character_effect_start, "").Replace(test.scale_character_effect_end, "").Replace(test.ondulation_character_effect_start, "").Replace(test.ondulation_character_effect_end, "").Replace(test.movement_character_effect_start, "").Replace(test.movement_character_effect_end, "").Replace("µ", "").Replace("£", "").Replace("%", "");
+        check = check.Replace("\n", "").Replace("\r", "").Replace(" ", "").Replace(test.color_character_effect_start, "").Replace(test.color_character_effect_end, "").Replace(test.scale_character_effect_start, "").Replace(test.scale_character_effect_end, "").Replace(test.ondulation_character_effect_start, "").Replace(test.ondulation_character_effect_end, "").Replace(test.movement_character_effect_start, "").Replace(test.movement_character_effect_end, "").Replace("µ", "").Replace("£", "").Replace("%", "");
 
 
         if (Input.GetButtonDown("Fire1"))
@@ -127,6 +127,7 @@ public class SC_Dialogue_system : MonoBehaviour
                     }
 
                     StopAllCoroutines();
+
                     text_component.text = text2;
                     check_effect();
 
@@ -213,9 +214,9 @@ public class SC_Dialogue_system : MonoBehaviour
             npc_anim.Play(anims[index].name);
         }
         check = lines[index];
-        check = check.Replace("%", string.Empty);
-        check = check.Replace("µ", string.Empty);
-        check = check.Replace("£", string.Empty);
+        check = check.Replace("%", "");
+        check = check.Replace("µ", "");
+        check = check.Replace("£", "");
         check = check.Replace(test.color_character_effect_start, "");
         check = check.Replace(test.color_character_effect_end, "");
         check = check.Replace(test.movement_character_effect_start, "");
