@@ -1,19 +1,23 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 
 public class SC_scene_master : MonoBehaviour
 {
+    [Header("Audio")]
     public List<AudioClip> Music_and_ambiances;
+    [Header("Camera")]
+    public int Camera_zoom = 100;
+    public Transform Camera_target;
     public bool Cam_horizontal_movement = true;
     public bool Cam_vertical_movement = true;
     private SC_Player_follow cam_follow;
-    public Transform Camera_target;
 
     private Transform player;
     public GameObject vignette_start;
     public GameObject game_master;
-    public float camera_size;
+    private PixelPerfectCamera cam;
     void Start()
     {
         if (GameObject.Find("Player") == null)
@@ -27,9 +31,11 @@ public class SC_scene_master : MonoBehaviour
         {
             GameObject.Find("AUDIO_MASTER").GetComponent<SC_Audio_master>().add_clip(Music_and_ambiances[i], i);
         }
+
+        cam = GameObject.Find("MAIN_CAMERA").GetComponent<PixelPerfectCamera>();
         cam_follow =GameObject.Find("MAIN_CAMERA").GetComponent<SC_Player_follow>();
         player = GameObject.Find("Player").transform;
-        
+        cam.assetsPPU = Camera_zoom;
     }
 
     private void Update()
