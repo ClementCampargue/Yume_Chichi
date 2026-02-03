@@ -73,7 +73,14 @@ public class SC_Player_controller : MonoBehaviour
     void HandleAnimations()
     {
         bool isMoving = input.sqrMagnitude != 0f;
-        animator.SetBool("Moving", isMoving);
+        if(rb.linearVelocity != Vector2.zero)
+        {
+            animator.SetBool("Moving", true);
+        }
+        else
+        {
+            animator.SetBool("Moving", false);
+        }
         Debug.Log("move  "+ input.sqrMagnitude);
         if (!isMoving) return;
 
