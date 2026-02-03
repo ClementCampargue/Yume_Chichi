@@ -11,6 +11,7 @@ TagManager:
   - Glass
   - Sand
   - Textile
+  - Sound
   layers:
   - Default
   - TransparentFX

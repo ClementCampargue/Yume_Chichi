@@ -55,12 +55,12 @@ public class SC_tile_stair_detection : MonoBehaviour
 
     void _in()
     {
-        player.stair_speed = speed;
+        player.stairSpeed = speed;
     }
 
     void _out()
     {
-        player.stair_speed = 0;
+        player.stairSpeed = 0;
 
     }
 }

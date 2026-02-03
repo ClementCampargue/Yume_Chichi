@@ -52,10 +52,11 @@ MonoBehaviour:
   Music_and_ambiances:
   - {fileID: 8300000, guid: ac02d399d26ed434c97e93267885ee08, type: 3}
   - {fileID: 8300000, guid: 2c409732fa72ae0478dc3ddc83027a99, type: 3}
-  Cam_horizontal_movement: 0
-  Cam_vertical_movement: 0
+  Cam_horizontal_movement: 1
+  Cam_vertical_movement: 1
   Camera_target: {fileID: 7023443822496494916}
   vignette_start: {fileID: 1190491074595393588, guid: d8ddde888609d8a468ea23d06b870b51, type: 3}
+  game_master: {fileID: 6686463512703979871, guid: 392723e52a6e4004889b3c0538e789c6, type: 3}
 --- !u!1 &8661477241323347689
 GameObject:
   m_ObjectHideFlags: 0

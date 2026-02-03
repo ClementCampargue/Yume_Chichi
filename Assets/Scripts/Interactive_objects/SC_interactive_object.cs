@@ -17,7 +17,6 @@ public class SC_interactive_object : MonoBehaviour
 
     public bool collided;
     private int index;
-
     void Start()
     {
         can_talk = true;
@@ -102,7 +101,7 @@ public class SC_interactive_object : MonoBehaviour
     void player_anim()
     {
 
-        Transform trs = transform.Find("Collider");
+        Transform trs = transform.Find("Target");
         if (player.transform.position.x > trs.position.x && Mathf.Abs(player.transform.position.x - trs.position.x) > Mathf.Abs(player.transform.position.y - trs.position.y))
         {
             player.animator.SetBool("Side", true);

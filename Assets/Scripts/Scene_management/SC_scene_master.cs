@@ -12,9 +12,14 @@ public class SC_scene_master : MonoBehaviour
 
     private Transform player;
     public GameObject vignette_start;
-
+    public GameObject game_master;
+    public float camera_size;
     void Start()
     {
+        if (GameObject.Find("Player") == null)
+        {
+            Instantiate(game_master);
+        }
         PlayerPrefs.SetString("Scene" + PlayerPrefs.GetInt("Save"), SceneManager.GetActiveScene().name );
 
         Instantiate(vignette_start);

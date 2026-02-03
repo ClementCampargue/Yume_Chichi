@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 9
+  version: 10
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -84,6 +84,9 @@ Material:
     - _Distortion_scale: 50
     - _Distortion_speed: 0.01
     - _EnableExternalAlpha: 0
+    - _Fade_blur: 1
+    - _Fade_height: 0
+    - _Fade_on: 0
     - _Grass_on: 0
     - _Multiplier: -6
     - _Noise_on: 0

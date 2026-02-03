@@ -46,7 +46,7 @@ public class SC_footstep_master : MonoBehaviour
         if (spritesUnderPlayer.Any())
         {
             SpriteRenderer topSprite = spritesUnderPlayer.First();
-            Debug.Log("Sprite au-dessus du joueur : " + topSprite.tag);
+            //Debug.Log("Sprite au-dessus du joueur : " + topSprite.tag);
 
             currenttag = topSprite.tag;
 

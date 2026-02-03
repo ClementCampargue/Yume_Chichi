@@ -63,9 +63,13 @@ Material:
     - _Base_Height: 0
     - _Bend: 2.27
     - _ColorMask: 15
+    - _Fade_blur: 1
+    - _Fade_height: 0
+    - _Fade_on: 0
     - _Grass_on: 1
     - _Height: 0
     - _Noise: 0
+    - _Noise_on: 0
     - _Noise_power: -14.7
     - _Noise_speed: 0.1
     - _Noise_tiling: 37.74
@@ -111,4 +115,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 9
+  version: 10
