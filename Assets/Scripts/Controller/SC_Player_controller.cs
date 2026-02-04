@@ -5,6 +5,7 @@ public class SC_Player_controller : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed = 5f;
+    public float debug_speed = 5f;
     public bool can_act = true;
 
     [Header("References")]
@@ -64,8 +65,14 @@ public class SC_Player_controller : MonoBehaviour
         {
             velocity.y = Mathf.Sign(input.x) * stairSpeed * moveSpeed;
         }
-
-        rb.linearVelocity = velocity;
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            rb.linearVelocity = velocity * debug_speed;
+        }
+        else
+        {
+            rb.linearVelocity = velocity;
+        }
     }
 
     // ================= ANIMATIONS =================
