@@ -27,7 +27,6 @@ public class SC_game_master : MonoBehaviour
         else
         {
             Debug.unityLogger.logEnabled = false;
-            Destroy(debugger);
         }
         save_slot.text = PlayerPrefs.GetInt("Save").ToString();
     }

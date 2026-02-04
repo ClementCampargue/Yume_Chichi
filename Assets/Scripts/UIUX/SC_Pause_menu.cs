@@ -1,18 +1,22 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 
 public class SC_Pause_menu : MonoBehaviour
 {
     public List<GameObject> pages;
+    public List<string> pages_name;
     public List<Animator> pages_header_anims;
     public int page_index;
     public bool opened;
     private Animator canvas_anim;
-
+    public TextMeshProUGUI text;
     void Start()
     {
         canvas_anim = GetComponent<Animator>();
+        canvas_anim.SetTrigger("close");
+
     }
     void Update()
     {
@@ -24,6 +28,14 @@ public class SC_Pause_menu : MonoBehaviour
         {
             check_input(2);
         }
+        if (Input.GetButtonDown("LeftTrigger"))
+        {
+            previous_page();
+        }
+        if (Input.GetButtonDown("RightTrigger"))
+        {
+            next_page();
+        }
     }
 
     void check_input(int index)
@@ -31,10 +43,13 @@ public class SC_Pause_menu : MonoBehaviour
         page_index = index;
         if (opened)
         {
+            Time.timeScale = 1;
             canvas_anim.SetTrigger("close");
         }
         else
         {
+            Time.timeScale = 0;
+
             if (canvas_anim.enabled == false)
             {
                 canvas_anim.enabled = true;
@@ -77,6 +92,8 @@ public class SC_Pause_menu : MonoBehaviour
     }
     public void update_page()
     {
+        text.text = pages_name[page_index];
+
         foreach (GameObject page in pages) 
         {
             page.SetActive(false);
@@ -97,6 +114,11 @@ public class SC_Pause_menu : MonoBehaviour
             pages_header_anims[page_index].ResetTrigger("unselected");
             pages_header_anims[page_index].SetTrigger("selected");
         }
-
+    }
+    public void close()
+    {
+        Time.timeScale = 1;
+        canvas_anim.SetTrigger("close");
+        opened = !opened;
     }
 }

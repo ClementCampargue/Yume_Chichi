@@ -16,6 +16,14 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 222
       objectReference: {fileID: 0}
+    - target: {fileID: 2720041574414600816, guid: abf76056907b9f946b922a6278aacb99, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720041574414600816, guid: abf76056907b9f946b922a6278aacb99, type: 3}
+      propertyPath: m_Navigation.m_WrapAround
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3475618581540156084, guid: abf76056907b9f946b922a6278aacb99, type: 3}
       propertyPath: m_PreserveAspect
       value: 0
@@ -32,6 +40,14 @@ PrefabInstance:
       propertyPath: m_PreserveAspect
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4730576295098326302, guid: abf76056907b9f946b922a6278aacb99, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730576295098326302, guid: abf76056907b9f946b922a6278aacb99, type: 3}
+      propertyPath: m_Navigation.m_WrapAround
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5117641935963147062, guid: abf76056907b9f946b922a6278aacb99, type: 3}
       propertyPath: m_Name
       value: Dialogue
@@ -39,6 +55,14 @@ PrefabInstance:
     - target: {fileID: 5117641935963147062, guid: abf76056907b9f946b922a6278aacb99, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5970071036406318867, guid: abf76056907b9f946b922a6278aacb99, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5970071036406318867, guid: abf76056907b9f946b922a6278aacb99, type: 3}
+      propertyPath: m_Navigation.m_WrapAround
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6268187768607584424, guid: abf76056907b9f946b922a6278aacb99, type: 3}
       propertyPath: speed
@@ -143,6 +167,14 @@ PrefabInstance:
     - target: {fileID: 6326454652774161632, guid: abf76056907b9f946b922a6278aacb99, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6944148833249120994, guid: abf76056907b9f946b922a6278aacb99, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6944148833249120994, guid: abf76056907b9f946b922a6278aacb99, type: 3}
+      propertyPath: m_Navigation.m_WrapAround
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3127598480786615514, guid: abf76056907b9f946b922a6278aacb99, type: 3}
