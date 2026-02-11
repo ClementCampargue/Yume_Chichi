@@ -3910,7 +3910,7 @@
     "m_ObjectId": "235242dc37174ebdbf0044effe5ae83c",
     "m_Title": "Stop motion effect",
     "m_Position": {
-        "x": -4971.99951171875,
+        "x": -4971.9990234375,
         "y": 1549.9996337890625
     }
 }
@@ -6200,8 +6200,8 @@
     "m_ObjectId": "51bdb45ee4a84b2a83c0d0945c3526ef",
     "m_Title": "Rotation",
     "m_Position": {
-        "x": -3836.999755859375,
-        "y": -1771.9998779296875
+        "x": -3837.332763671875,
+        "y": -1772.0
     }
 }
 
@@ -6312,11 +6312,11 @@
     "m_Hidden": false,
     "m_PerRendererData": false,
     "m_customAttributes": [],
-    "m_Value": -0.14000000059604646,
-    "m_FloatType": 0,
+    "m_Value": 0.0,
+    "m_FloatType": 1,
     "m_RangeValues": {
         "x": 0.0,
-        "y": 1.0
+        "y": 5.0
     },
     "m_SliderType": 0,
     "m_SliderPower": 3.0,
@@ -6789,8 +6789,8 @@
     "m_ObjectId": "5d64534a6f4c41309d6ebe777f7018b6",
     "m_Title": "Wind",
     "m_Position": {
-        "x": -4005.999755859375,
-        "y": -1172.9998779296875
+        "x": -4005.99951171875,
+        "y": -1174.0001220703125
     }
 }
 
@@ -7775,8 +7775,8 @@
     "m_Value": 0.0,
     "m_FloatType": 1,
     "m_RangeValues": {
-        "x": -1.0,
-        "y": 1.0
+        "x": -10.0,
+        "y": 10.0
     },
     "m_SliderType": 0,
     "m_SliderPower": 3.0,
@@ -11018,10 +11018,10 @@
     "m_PerRendererData": false,
     "m_customAttributes": [],
     "m_Value": 0.07999999821186066,
-    "m_FloatType": 0,
+    "m_FloatType": 1,
     "m_RangeValues": {
         "x": 0.0,
-        "y": 1.0
+        "y": 10.0
     },
     "m_SliderType": 0,
     "m_SliderPower": 3.0,
@@ -11932,8 +11932,8 @@
     "m_ObjectId": "c5b9074d6f2043adb2f5928858a66c92",
     "m_Title": "Fade",
     "m_Position": {
-        "x": -1634.0,
-        "y": 1518.0
+        "x": -1633.9998779296875,
+        "y": 1517.9993896484375
     }
 }
 

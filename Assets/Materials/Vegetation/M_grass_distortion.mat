@@ -101,8 +101,8 @@ Material:
     - _FlipbookMode: 0
     - _Glossiness: 0
     - _Grass_on: 0
-    - _Height_fade: -0.14
-    - _Height_fade_smooth: 0.08
+    - _Height_fade: 2.92
+    - _Height_fade_smooth: 2.94
     - _Metallic: 0
     - _Mode: 0
     - _Noise_on: 0
@@ -124,9 +124,9 @@ Material:
     - _Stop_motion_On: 0
     - _Surface: 0
     - _Wave_angle: 90
-    - _Wave_frequency: 3
-    - _Wave_power: 1
-    - _Wave_speed: 1
+    - _Wave_frequency: 19.74
+    - _Wave_power: 5.44
+    - _Wave_speed: 0.14
     - _Wind_Noise_scale: 0.5
     - _Wind_power: 0.1
     - _Wind_speed: 0
