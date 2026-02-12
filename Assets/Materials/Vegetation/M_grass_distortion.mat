@@ -111,7 +111,7 @@ Material:
     - _Noise_speed: 1
     - _Noise_tiling: 1
     - _Pinning_position: 0
-    - _Pinning_smooth: 0.08
+    - _Pinning_smooth: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Rotation_amount: 1
@@ -127,7 +127,7 @@ Material:
     - _SrcBlendAlpha: 1
     - _Stop_motion_On: 0
     - _Surface: 0
-    - _Wave_Height: 1.2
+    - _Wave_Height: 1
     - _Wave_Width: 3
     - _Wave_angle: 90
     - _Wave_frequency: 19.74
