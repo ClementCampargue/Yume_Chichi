@@ -42,7 +42,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Debug: 0
-    - _Direction_Angle: 90
+    - _Direction_Angle: 58
     - _Frequency: 10
     - _Pin_angle: 360
     - _Pin_dist: 0.000000001
@@ -53,7 +53,7 @@ Material:
     - _Wave_Amplitude: 5
     - _Wave_Frequency: 4.7
     - _Wave_Width: 15.9
-    - _Wave_speed: 10
+    - _Wave_speed: 4
     m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1
