@@ -3,7 +3,7 @@ using UnityEngine;
 public class SC_look_effect : MonoBehaviour
 {
     [Header("References")]
-    public Transform player;
+    private Transform player;
     public Transform pupil;
     private SpriteRenderer pupilRenderer;
 
@@ -30,6 +30,7 @@ public class SC_look_effect : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.Find("Player").transform;
         initialLocalPos = pupil.localPosition;
         pupilRenderer = pupil.GetComponent<SpriteRenderer>();
     }
