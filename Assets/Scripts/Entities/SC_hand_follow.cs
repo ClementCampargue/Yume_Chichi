@@ -9,13 +9,18 @@ public class SC_hand_follow : MonoBehaviour
     public float detectionDistance = 5f;
     public float attackDuration = 2f;
     public float freezeDuration = 0.5f;
+    public float objectiveFreezeDuration = 1f; // Nouveau délai pour les objectives
     public float avoidanceDistance = 1f;
     public float avoidanceStrength = 3f;
     public LayerMask obstacleLayer;
+    public float ObjectiveDetectionDistance = 5f;
     public string objectiveTag = "Objective";
     public float grabReleaseMashThreshold = 5f;
     public float grabStunDuration = 1f;
     public float grabDelayBeforeReturn = 1f;
+
+    [Header("Animation")]
+    public Animator animator; // Animator attaché à la main
 
     private Transform player;
     private Transform currentTarget;
@@ -29,6 +34,7 @@ public class SC_hand_follow : MonoBehaviour
     private bool isGrabbingPlayer = false;
     private bool isStunned = false;
     private bool isGrabDelay = false;
+    private bool isObjectiveFreeze = false;
 
     private float attackTimer = 0f;
     private float freezeTimer = 0f;
@@ -46,6 +52,9 @@ public class SC_hand_follow : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         startPosition = rb.position;
         currentTarget = player;
+
+        if (animator == null)
+            animator = GetComponent<Animator>();
     }
 
     void FixedUpdate()
@@ -60,13 +69,25 @@ public class SC_hand_follow : MonoBehaviour
             {
                 isStunned = false;
                 isReturning = true;
+                animator.SetTrigger("StartMove"); // Repart après stun
             }
             return;
         }
 
         // Détection distance et changement de cible si objectif
-        Collider2D objectiveNearby = Physics2D.OverlapCircle(rb.position, detectionDistance, LayerMask.GetMask(objectiveTag));
-        currentTarget = objectiveNearby != null ? objectiveNearby.transform : player;
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(rb.position, ObjectiveDetectionDistance);
+        currentTarget = player; // défaut
+
+        bool foundObjective = false;
+        foreach (var col in colliders)
+        {
+            if (col.CompareTag(objectiveTag))
+            {
+                currentTarget = col.transform;
+                foundObjective = true;
+                break;
+            }
+        }
 
         float distanceToTarget = Vector2.Distance(rb.position, currentTarget.position);
 
@@ -77,6 +98,8 @@ public class SC_hand_follow : MonoBehaviour
             attackTimer = attackDuration;
             pathPositions.Clear();
             pathPositions.Add(rb.position);
+
+            animator.SetTrigger("StartMove"); // Animation de départ
         }
 
         // --- PHASE ATTAQUE ---
@@ -84,14 +107,13 @@ public class SC_hand_follow : MonoBehaviour
         {
             attackTimer -= Time.fixedDeltaTime;
 
-            Vector2 newPos = MoveTowards(currentTarget.position, speed, false); // rotation normale
+            Vector2 newPos = MoveTowards(currentTarget.position, speed, false);
 
-            // Enregistrement du chemin
             if (Vector2.Distance(pathPositions[pathPositions.Count - 1], newPos) > 0.05f)
                 pathPositions.Add(newPos);
 
-            // Vérifie si on touche le joueur
-            if (!isGrabbingPlayer && Vector2.Distance(rb.position, player.position) < 0.5f)
+            // Si on touche le joueur
+            if (!isGrabbingPlayer && currentTarget.CompareTag("Player") && Vector2.Distance(rb.position, player.position) < 0.5f)
             {
                 isGrabbingPlayer = true;
                 isAttacking = false;
@@ -104,9 +126,26 @@ public class SC_hand_follow : MonoBehaviour
                     pathPositions.Add(rb.position);
 
                 returnIndex = pathPositions.Count - 1;
+
+                animator.SetTrigger("ReachTarget"); // Animation quand elle touche le player
             }
 
-            if (attackTimer <= 0f && !isGrabbingPlayer)
+            // Si on touche un objective
+            if (!isGrabbingPlayer && currentTarget.CompareTag(objectiveTag) && Vector2.Distance(rb.position, currentTarget.position) < 0.1f)
+            {
+                isAttacking = false;
+                isFreezing = true;
+                freezeTimer = objectiveFreezeDuration; // juste un délai différent
+                if (pathPositions.Count == 0 || pathPositions[pathPositions.Count - 1] != rb.position)
+                    pathPositions.Add(rb.position);
+
+                returnIndex = pathPositions.Count - 1;
+
+                animator.SetTrigger("ReachTarget"); // Animation quand elle touche un objectif
+            }
+
+            // Si le timer attaque s’épuise
+            if (attackTimer <= 0f && !isGrabbingPlayer && !currentTarget.CompareTag(objectiveTag))
             {
                 isAttacking = false;
                 isFreezing = true;
@@ -125,6 +164,7 @@ public class SC_hand_follow : MonoBehaviour
             {
                 isFreezing = false;
                 isReturning = true;
+                animator.SetTrigger("StartMove"); // Repart après freeze
             }
             return;
         }
@@ -132,7 +172,6 @@ public class SC_hand_follow : MonoBehaviour
         // --- PHASE RETOUR (inclut grab) ---
         if (isReturning || isGrabbingPlayer)
         {
-            // Délai avant retour si grab
             if (isGrabbingPlayer && isGrabDelay)
             {
                 grabDelayTimer -= Time.fixedDeltaTime;
@@ -149,11 +188,9 @@ public class SC_hand_follow : MonoBehaviour
             Vector2 newPos = Vector2.MoveTowards(currentPos, targetPos, returnSpeed * Time.fixedDeltaTime);
             rb.MovePosition(newPos);
 
-            // Déplace le joueur avec la main si grab
             if (isGrabbingPlayer)
                 player.position = newPos;
 
-            // Rotation vers l'opposé du mouvement de retour
             Vector2 rotationDir = currentPos - targetPos;
             float angle = Mathf.Atan2(rotationDir.y, rotationDir.x) * Mathf.Rad2Deg;
             rb.rotation = angle;
@@ -177,7 +214,6 @@ public class SC_hand_follow : MonoBehaviour
     {
         Vector2 direction = (targetPosition - rb.position).normalized;
 
-        // Gestion obstacles
         RaycastHit2D hit = Physics2D.Raycast(rb.position, direction, avoidanceDistance, obstacleLayer);
         Vector2 moveDirection = direction;
 
@@ -187,12 +223,10 @@ public class SC_hand_follow : MonoBehaviour
             moveDirection = (direction + avoidDirection * avoidanceStrength).normalized;
         }
 
-        // Rotation
         Vector2 rotationDir = invertRotation ? -moveDirection : moveDirection;
         float angle = Mathf.Atan2(rotationDir.y, rotationDir.x) * Mathf.Rad2Deg;
         rb.rotation = angle;
 
-        // Déplacement
         Vector2 newPosition = rb.position + moveDirection * currentSpeed * Time.fixedDeltaTime;
         rb.MovePosition(newPosition);
 
@@ -206,13 +240,13 @@ public class SC_hand_follow : MonoBehaviour
             mashCounter++;
             if (mashCounter >= grabReleaseMashThreshold)
             {
-                // Libération
                 isGrabbingPlayer = false;
                 isGrabDelay = false;
                 isStunned = true;
                 stunTimer = grabStunDuration;
 
                 isReturning = true;
+                animator.SetTrigger("StartMove"); // repart après stun
             }
         }
     }
@@ -222,14 +256,17 @@ public class SC_hand_follow : MonoBehaviour
         if (Input.anyKeyDown)
             MashAttempt();
     }
+
     private void OnDrawGizmosSelected()
     {
-        // Couleur du gizmo : jaune translucide
         Gizmos.color = new Color(1f, 1f, 0f, 0.3f);
-
-        // Dessine un cercle autour de la position de la main (ou startPosition si non play mode)
         Vector2 gizmoPosition = Application.isPlaying ? rb.position : transform.position;
-        Gizmos.DrawSphere(gizmoPosition, 0.1f); // petit point central
+        Gizmos.DrawSphere(gizmoPosition, 0.1f);
         Gizmos.DrawWireSphere(gizmoPosition, detectionDistance);
+
+        Gizmos.color = new Color(1f, 0f, 1f, 0.3f);
+        Vector2 gizmoPosition2 = Application.isPlaying ? rb.position : transform.position;
+        Gizmos.DrawSphere(gizmoPosition2, 0.1f);
+        Gizmos.DrawWireSphere(gizmoPosition2, ObjectiveDetectionDistance);
     }
 }
