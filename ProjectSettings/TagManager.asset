@@ -12,6 +12,7 @@ TagManager:
   - Sand
   - Textile
   - Sound
+  - Interactive
   layers:
   - Default
   - TransparentFX
