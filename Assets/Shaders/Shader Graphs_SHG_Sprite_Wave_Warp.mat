@@ -42,7 +42,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Debug: 0
-    - _Direction_Angle: 58
+    - _Direction_Angle: 32
     - _Frequency: 10
     - _Pin_angle: 360
     - _Pin_dist: 0.000000001

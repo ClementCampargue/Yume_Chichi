@@ -6749,12 +6749,12 @@ TextureImporter:
       name: SS_Forest_14
       rect:
         serializedVersion: 2
-        x: 663
-        y: 299
-        width: 173
-        height: 52
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 650
+        y: 294
+        width: 81
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -6811,12 +6811,12 @@ TextureImporter:
       name: SS_Forest_15
       rect:
         serializedVersion: 2
-        x: 749
-        y: 384
-        width: 77
-        height: 53
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 751
+        y: 298
+        width: 45
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -12496,6 +12496,72 @@ TextureImporter:
         'boneIndex[1]': 0
         'boneIndex[2]': 0
         'boneIndex[3]': 0
+    - serializedVersion: 2
+      name: SS_Forest_28
+      rect:
+        serializedVersion: 2
+        x: 651
+        y: 341
+        width: 136
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 329a3203502b831479b56042f7cfadba
+      internalID: 384709014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SS_Forest_29
+      rect:
+        serializedVersion: 2
+        x: 602
+        y: 580
+        width: 150
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dd420f13b2d48c4aa02d0458f64822d
+      internalID: 1363909246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SS_Forest_30
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 458
+        width: 120
+        height: 122
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45b0adfcf430f954dbcec88ca550bef7
+      internalID: 344865360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -12533,7 +12599,10 @@ TextureImporter:
       SS_Forest_25: 416013633
       SS_Forest_26: 438774225
       SS_Forest_27: -247251540
+      SS_Forest_28: 384709014
+      SS_Forest_29: 1363909246
       SS_Forest_3: 1270480404
+      SS_Forest_30: 344865360
       SS_Forest_4: 1741193848
       SS_Forest_5: -629554057
       SS_Forest_6: -199182137

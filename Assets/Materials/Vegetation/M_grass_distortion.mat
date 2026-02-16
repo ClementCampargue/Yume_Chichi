@@ -128,7 +128,7 @@ Material:
     - _Stop_motion_On: 0
     - _Surface: 0
     - _Wave_Height: 1
-    - _Wave_Width: 3
+    - _Wave_Width: 3.92
     - _Wave_angle: 90
     - _Wave_frequency: 19.74
     - _Wave_power: 3.8
