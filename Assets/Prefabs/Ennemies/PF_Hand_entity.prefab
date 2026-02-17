@@ -133,10 +133,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f2974c6b7a6e564b85749e542e4f04c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 2
   returnSpeed: 6
-  detectionDistance: 2.6
-  attackDuration: 5
+  detectionDistance: 2
+  attackDuration: 20
   freezeDuration: 0.5
   objectiveFreezeDuration: 1
   avoidanceDistance: 9.08
