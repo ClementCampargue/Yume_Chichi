@@ -6749,10 +6749,10 @@ TextureImporter:
       name: SS_Forest_14
       rect:
         serializedVersion: 2
-        x: 650
-        y: 294
-        width: 81
-        height: 41
+        x: 647
+        y: 292
+        width: 84
+        height: 46
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -6811,10 +6811,10 @@ TextureImporter:
       name: SS_Forest_15
       rect:
         serializedVersion: 2
-        x: 751
-        y: 298
-        width: 45
-        height: 34
+        x: 748
+        y: 296
+        width: 52
+        height: 38
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -12870,6 +12870,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: SS_Forest_45
+      rect:
+        serializedVersion: 2
+        x: 749
+        y: 232
+        width: 24
+        height: 55
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8c5ffdd5d3642c419117d4634357f55
+      internalID: -25002531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -12926,6 +12948,7 @@ TextureImporter:
       SS_Forest_42: 2051046778
       SS_Forest_43: 1323936321
       SS_Forest_44: 644054853
+      SS_Forest_45: -25002531
       SS_Forest_5: -629554057
       SS_Forest_6: -199182137
       SS_Forest_7: 1646748215
