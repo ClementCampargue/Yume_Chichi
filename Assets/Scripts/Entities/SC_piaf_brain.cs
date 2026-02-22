@@ -4,9 +4,10 @@ using UnityEngine;
 public class SC_piaf_brain : MonoBehaviour
 {
     [Header("Movement")]
-    public float fleeSpeed = 10f;
-    public float fleeDistance = 5f;
+    public float fleeRadiusX = 6f;   // horizontal
+    public float fleeRadiusY = 3f;   // vertical
     public float fleeDelay = 0.5f;
+    public float fleeSpeed = 10f;
 
     [Header("Wave")]
     public GameObject wavePrefab;
@@ -61,8 +62,16 @@ public class SC_piaf_brain : MonoBehaviour
 
         if (!isFleeing && !isCoroutineRunning)
         {
-            float distance = Vector2.Distance(transform.position, player.position);
-            if (distance < fleeDistance)
+            Vector2 dirToPlayer = player.position - transform.position;
+
+            float x = dirToPlayer.x;
+            float y = dirToPlayer.y;
+
+            float ellipseCheck =
+                (x * x) / (fleeRadiusX * fleeRadiusX) +
+                (y * y) / (fleeRadiusY * fleeRadiusY);
+
+            if (ellipseCheck <= 1f)
             {
                 StartCoroutine(FleeAfterDelay());
             }
@@ -120,5 +129,26 @@ public class SC_piaf_brain : MonoBehaviour
         }
 
         // Gestion de l'échelle
+    }
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+
+        int segments = 60;
+        Vector3 prevPoint = Vector3.zero;
+
+        for (int i = 0; i <= segments; i++)
+        {
+            float angle = i * Mathf.PI * 2 / segments;
+            float x = Mathf.Cos(angle) * fleeRadiusX;
+            float y = Mathf.Sin(angle) * fleeRadiusY;
+
+            Vector3 point = transform.position + new Vector3(x, y, 0);
+
+            if (i > 0)
+                Gizmos.DrawLine(prevPoint, point);
+
+            prevPoint = point;
+        }
     }
 }
