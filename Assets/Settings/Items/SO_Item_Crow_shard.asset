@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3c9eb23d68fa6d498fbeed7811f1873, type: 3}
+  m_Name: SO_Item_Crow_shard
+  m_EditorClassIdentifier: 
+  localizedName:
+    m_TableReference:
+      m_TableCollectionName: GUID:e7e458475a0b93b43be80745dd4652b2
+    m_TableEntryReference:
+      m_KeyId: 21370257408
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  localizedDescription:
+    m_TableReference:
+      m_TableCollectionName: GUID:11d6c35b4ed773744853594c5d6cba6c
+    m_TableEntryReference:
+      m_KeyId: 7910735872
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  sprite: {fileID: 21300000, guid: 326908ad200780b4f839ffe5f546c842, type: 3}
+  references:
+    version: 2
+    RefIds: []

@@ -438,6 +438,7 @@ public class SC_Dialogue_system : MonoBehaviour
 
     public void End_dialogue()
     {
+
         last_dialoguie = true;
         typing = false;
 
@@ -474,6 +475,9 @@ public class SC_Dialogue_system : MonoBehaviour
         }
         if (last_dialoguie)
         {
+
+
+
             anim.ResetTrigger("no_character_start");
             player.can_act = true;
             if (portraits[index].ToString() == "null")
@@ -484,7 +488,32 @@ public class SC_Dialogue_system : MonoBehaviour
             {
                 anim.SetTrigger("disable");
             }
+
+
         }
+        if (transform.parent != null)
+        {
+
+
+            SC_item item = transform.parent.GetComponent<SC_item>();
+
+            if (item != null)
+            {
+                item.get();
+            }
+
+        }
+
+        if (transform.parent != null)
+        {
+            SC_frame_screen frame = transform.parent.GetComponent<SC_frame_screen>();
+
+            if (frame != null)
+            {
+                frame.Close_frame();
+            }
+        }
+
         Destroy(test);
 
     }

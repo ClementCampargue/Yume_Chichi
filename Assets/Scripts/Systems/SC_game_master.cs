@@ -21,6 +21,8 @@ public class SC_game_master : MonoBehaviour
 
         if (debug)
         {
+            Debug.unityLogger.logEnabled = true;
+
             Application.targetFrameRate = targetfps;
             debugger.SetActive(true);
         }

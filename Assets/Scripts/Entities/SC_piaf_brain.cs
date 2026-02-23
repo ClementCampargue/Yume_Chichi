@@ -27,14 +27,30 @@ public class SC_piaf_brain : MonoBehaviour
     public Animator anim;
     private Vector3 originalScale;
     private bool facingRight;
+    private Vector3 startPosition;
+    private bool respawning;
+
+    public float respawn_dist = 10;
     void Start()
     {
         originalScale = transform.localScale;
+        startPosition = transform.position;
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()
     {
+
+        if ((respawning))
+        {
+            if (Vector2.Distance(startPosition, player.position) > respawn_dist)
+            {
+                reset();
+            }
+
+                return;
+        }
+
         if (fleeDirection.x != 0) // éviter la division par zéro ou jitter quand x ~ 0
         {
             bool movingRight = fleeDirection.x > 0;
@@ -52,9 +68,10 @@ public class SC_piaf_brain : MonoBehaviour
 
         if (isFleeing)
         {
-            if(Vector2.Distance(transform.position, player.position) > 10)
+            if(Vector2.Distance(transform.position, player.position) > 8)
             {
-                Destroy(gameObject);
+                respawning = true;
+                transform.GetChild(0).gameObject.SetActive(false);
             }
         }
 
@@ -150,5 +167,27 @@ public class SC_piaf_brain : MonoBehaviour
 
             prevPoint = point;
         }
+    }
+
+    void reset()
+    {
+        anim.SetTrigger("idle");
+
+        respawning = false;
+        // Désactive visuellement
+        gameObject.SetActive(false);
+
+        transform.GetChild(0).gameObject.SetActive(true);
+        // Reset état
+        isFleeing = false;
+        isCoroutineRunning = false;
+        fleeDirection = Vector3.zero;
+
+        transform.position = startPosition;
+        transform.localScale = originalScale;
+        facingRight = false;
+
+        gameObject.SetActive(true);
+
     }
 }

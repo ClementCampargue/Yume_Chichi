@@ -15,8 +15,9 @@ public class SC_interactive_object : MonoBehaviour
     private bool can_talk;
     private Animator animator;
 
-    public bool collided;
+    private bool collided;
     private int index;
+
     void Start()
     {
         can_talk = true;
@@ -74,16 +75,34 @@ public class SC_interactive_object : MonoBehaviour
 
     void Start_dialogue()
     {
-        can_talk = false;
-        player.rb.linearVelocity = Vector2.zero;
-        player_anim();
-        arrow.enabled = false;
+        if (player.can_act)
+        {
+            player.can_act = false;
+            can_talk = false;
+            player.rb.linearVelocity = Vector2.zero;
+            player_anim();
+            arrow.enabled = false;
+
+            SC_frame_screen frame = GetComponent<SC_frame_screen>();
+
+            if (frame != null)
+            {
+                frame.open_frame();
+            }
+            start_();
+
+        }
+
+
+    }
+
+    void start_()
+    {
         GameObject I_dialogue;
         I_dialogue = Instantiate(dialogues[index]);
         I_dialogue.transform.parent = transform;
         I_dialogue.SetActive(true);
         I_dialogue.GetComponent<SC_Dialogue_system>().interactive = this;
-        player.can_act = false;
         if (index < dialogues.Count - 1)
         {
             index++;

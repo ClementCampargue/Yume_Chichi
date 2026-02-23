@@ -12,5 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Beauty Shot.unity
     guid: 0c82b4e27c5d8fe418f9e79093fc58f8
   m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 1763e67c8b8c0344ebade345e71952cc, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+    com.unity.localization.settings: {fileID: 11400000, guid: e8415bd47349480408aa3bc1d644d761, type: 2}
   m_UseUCBPForAssetBundles: 0
