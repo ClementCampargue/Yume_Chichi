@@ -5,7 +5,7 @@ public class SC_look_effect : MonoBehaviour
     [Header("References")]
     private Transform player;
     public Transform pupil;
-    private SpriteRenderer pupilRenderer;
+    public SpriteRenderer pupilRenderer;
 
     [Header("Movement")]
     public float radius = 0.2f;              // Distance max du centre
@@ -28,11 +28,43 @@ public class SC_look_effect : MonoBehaviour
     private Vector3 targetLocalPos;
     private Vector3 targetScale;
 
+    [Header("Rotation Progress")]
+    public float rotationSpeed = 1f;        // Vitesse accumulation
+    public float maxRotationValue = 5f;     // Cap positif
+    public float minRotationValue = -5f;    // Cap négatif
+    public float heightMultiplier = 0.2f;   // Hauteur par unité
+    public float interactionThreshold = -4f; // Seuil interaction
+
+    public SpriteRenderer targetSpriteRenderer;
+    public SpriteRenderer targetSpriteRenderer2;
+
+    private Material targetMaterial;
+    private Material targetMaterial2;
+    private int offsetID;
+    private int offsetID2;
+    private float rotationValue = 0f;
+    private float previousAngle;
+    private Vector3 targetInitialPos;
+
     void Start()
     {
         player = GameObject.Find("Player").transform;
         initialLocalPos = pupil.localPosition;
-        pupilRenderer = pupil.GetComponent<SpriteRenderer>();
+
+        Vector3 toPlayer = player.position - transform.position;
+        previousAngle = Mathf.Atan2(toPlayer.y, toPlayer.x);
+
+        if (targetSpriteRenderer != null)
+        {
+            targetMaterial = targetSpriteRenderer.material; // crée une instance
+            offsetID = Shader.PropertyToID("offset_");
+        }
+
+        if (targetSpriteRenderer2 != null)
+        {
+            targetMaterial2 = targetSpriteRenderer2.material; // crée une instance
+            offsetID2 = Shader.PropertyToID("offset_");
+        }
     }
 
     void Update()
@@ -69,5 +101,47 @@ public class SC_look_effect : MonoBehaviour
         Color c = pupilRenderer.color;
         c.a = visibility;
         pupilRenderer.color = c;
+
+
+
+        // ===== Détection rotation autour =====
+        Vector3 toPlayerCenter = player.position - transform.position;
+        float currentAngle = Mathf.Atan2(toPlayerCenter.y, toPlayerCenter.x);
+
+        float deltaAngle = Mathf.DeltaAngle(previousAngle * Mathf.Rad2Deg, currentAngle * Mathf.Rad2Deg);
+        previousAngle = currentAngle;
+
+        // Accumulation selon sens
+        rotationValue += deltaAngle * rotationSpeed * Time.deltaTime;
+
+        // Clamp
+        rotationValue = Mathf.Clamp(rotationValue, minRotationValue, maxRotationValue);
+
+        // ===== Shader offset Y =====
+        if (targetMaterial != null)
+        {
+            float heightOffset = rotationValue * heightMultiplier;
+
+            Vector2 currentOffset = targetMaterial.GetVector(offsetID);
+            currentOffset.y = heightOffset;
+
+            targetMaterial.SetVector(offsetID, currentOffset);
+        }
+        if (targetMaterial2 != null)
+        {
+            float heightOffset = rotationValue * heightMultiplier;
+
+            Vector2 currentOffset = targetMaterial2.GetVector(offsetID2);
+            currentOffset.y = heightOffset;
+
+            targetMaterial2.SetVector(offsetID2, currentOffset);
+        }
+        // ===== Interaction quand assez bas =====
+        if (rotationValue <= interactionThreshold)
+        {
+            Debug.Log("Interaction possible !");
+            // Ici tu peux appeler une fonction
+            // Interact();
+        }
     }
 }

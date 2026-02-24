@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 68608877386071033}
+  - component: {fileID: 2337529067301993603}
+  - component: {fileID: 2858242791465071647}
   m_Layer: 0
   m_Name: PF_Statue
   m_TagString: Untagged
@@ -30,8 +32,106 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1573161202195962807}
-  - {fileID: 182401891797944747}
+  - {fileID: 3147836110493798083}
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2337529067301993603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3791514678474794670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b84ca1d5ec525d34bb597e22bf1071ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pupil: {fileID: 3147836110493798083}
+  pupilRenderer: {fileID: 911633350702286504}
+  radius: 0.47
+  cylinderStrength: 0.5
+  verticalLimit: 0.22
+  squashStrength: 0.85
+  stretchStrength: 0
+  minSquash: 0.01
+  smoothSpeed: 100
+  hideStartY: 0
+  hideEndY: 0.06
+  rotationSpeed: 0.25
+  maxRotationValue: 2
+  minRotationValue: 0
+  heightMultiplier: 0.2
+  interactionThreshold: -4
+  targetSpriteRenderer: {fileID: 3436619238044469185}
+  targetSpriteRenderer2: {fileID: 911633350702286504}
+--- !u!58 &2858242791465071647
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3791514678474794670}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: -0.24}
+  m_Radius: 0.3
+--- !u!1 &5064236899192002720
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3147836110493798083}
+  m_Layer: 0
+  m_Name: Visage_pivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3147836110493798083
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5064236899192002720}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.011530936, y: 0.375, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 182401891797944747}
+  m_Father: {fileID: 68608877386071033}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5766579950396183377
 GameObject:
@@ -43,7 +143,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1573161202195962807}
   - component: {fileID: 3436619238044469185}
-  - component: {fileID: 2117533218925298054}
   m_Layer: 0
   m_Name: Statue
   m_TagString: Untagged
@@ -60,7 +159,7 @@ Transform:
   m_GameObject: {fileID: 5766579950396183377}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.011530936, y: -0.75206757, z: 0}
+  m_LocalPosition: {x: 0.011530936, y: -0.578, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -89,7 +188,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 0c5400fe464b9ff4ebb730c712364114, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -120,30 +219,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!114 &2117533218925298054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5766579950396183377}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b84ca1d5ec525d34bb597e22bf1071ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  pupil: {fileID: 182401891797944747}
-  radius: 0.47
-  cylinderStrength: 0.5
-  verticalLimit: 0.22
-  squashStrength: 0.85
-  stretchStrength: 0
-  minSquash: 0.01
-  smoothSpeed: 100
-  hideStartY: 0
-  hideEndY: 0.06
+  m_SpriteSortPoint: 1
 --- !u!1 &8584520068607083183
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,7 +229,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 182401891797944747}
-  - component: {fileID: 4252017687462036155}
+  - component: {fileID: 911633350702286504}
   m_Layer: 0
   m_Name: Visage
   m_TagString: Untagged
@@ -170,13 +246,13 @@ Transform:
   m_GameObject: {fileID: 8584520068607083183}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.011530936, y: -0.722, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 68608877386071033}
+  m_Father: {fileID: 3147836110493798083}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &4252017687462036155
+--- !u!212 &911633350702286504
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -199,7 +275,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 0c5400fe464b9ff4ebb730c712364114, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -225,9 +301,9 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.34, y: 0.17}
+  m_Size: {x: 0.34, y: 0.44}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
