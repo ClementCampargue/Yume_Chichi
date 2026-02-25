@@ -45,6 +45,12 @@ public class SC_look_effect : MonoBehaviour
     private float rotationValue = 0f;
     private float previousAngle;
     private Vector3 targetInitialPos;
+    public Transform object_trs;
+    public SC_interactive_object interactive_object;
+    public float object_move_speed;
+
+    private Vector3 startPos;
+    private bool startPosSet = false;
 
     void Start()
     {
@@ -136,12 +142,26 @@ public class SC_look_effect : MonoBehaviour
 
             targetMaterial2.SetVector(offsetID2, currentOffset);
         }
-        // ===== Interaction quand assez bas =====
-        if (rotationValue <= interactionThreshold)
+        if (object_trs != null)
         {
-            Debug.Log("Interaction possible !");
-            // Ici tu peux appeler une fonction
-            // Interact();
+            if (!startPosSet)
+            {
+                startPos = object_trs.transform.position;
+                startPosSet = true;
+            }
+
+            float heightOffset = rotationValue * heightMultiplier * 1.5f;
+
+            Vector3 newPos = startPos;
+            newPos.y -= heightOffset;
+
+            object_trs.transform.position = newPos;
+        }
+        // ===== Interaction quand assez bas =====
+        if (rotationValue >= interactionThreshold)
+        {
+            interactive_object.enabled = true;
+            rotationSpeed = 0;
         }
     }
 }

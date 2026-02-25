@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class SC_Dialogue_system : MonoBehaviour
 {
     public int choice_index;
+    public bool talk_once;
     public bool choice;
     [HideInInspector] public SC_NPC npc;
     [HideInInspector] public Animator npc_anim;
@@ -46,7 +47,7 @@ public class SC_Dialogue_system : MonoBehaviour
     private bool end;
 
     public SC_text_effect_master test;
-
+    private bool talked;
     void Start()
     {
         Start_dialogue();
@@ -386,6 +387,15 @@ public class SC_Dialogue_system : MonoBehaviour
 
     public void Start_dialogue()
     {
+        if (talk_once && talked)
+        {
+            return;
+        }
+        if (!talked)
+        {
+            talked = true;
+        }
+
         index = 0;
 
         player = GameObject.Find("Player").GetComponent<SC_Player_controller>();

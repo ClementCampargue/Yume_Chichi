@@ -7,6 +7,7 @@ public class SC_interactive_object : MonoBehaviour
 {
     private SC_Player_controller player;
     private bool canactivate = true;
+    public bool talk_once;
 
     private SpriteRenderer arrow;
 
@@ -17,6 +18,7 @@ public class SC_interactive_object : MonoBehaviour
 
     private bool collided;
     private int index;
+    private bool talked;
 
     void Start()
     {
@@ -36,6 +38,12 @@ public class SC_interactive_object : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (talk_once && talked)
+        {
+            arrow.enabled = false;
+            return;
+        }
+
         if (collided && can_talk)
         {
             if (canactivate && Input.GetButtonDown("Fire1"))
@@ -75,6 +83,14 @@ public class SC_interactive_object : MonoBehaviour
 
     void Start_dialogue()
     {
+        if (talk_once && talked)
+        {
+            return;
+        }
+        if (!talked)
+        {
+            talked = true;
+        }
         if (player.can_act)
         {
             player.can_act = false;
