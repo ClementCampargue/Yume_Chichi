@@ -66,9 +66,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0
-    width: 1
-    height: 1
+    y: 0.18240741
+    width: 0.16145834
+    height: 0.21527778
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
@@ -107,7 +107,7 @@ MonoBehaviour:
   Vertical_follow: 1
   cutsceneSmoothSpeed: 2
   minSpeed: 2
-  acceleration: 2
+  acceleration: 4
   maxSpeed: 25
 --- !u!81 &3211162528666045814
 AudioListener:
