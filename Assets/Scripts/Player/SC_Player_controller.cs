@@ -20,6 +20,11 @@ public class SC_Player_controller : MonoBehaviour
     private Vector2 input;
     private Vector2 respawnCoordinates;
 
+    public static SC_Player_controller instance;
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
         int save = PlayerPrefs.GetInt("Save");
@@ -154,5 +159,18 @@ public class SC_Player_controller : MonoBehaviour
     void GoBackToSleep()
     {
         sleeping = true;
+    }
+
+    public void disable_controller()
+    {
+        animator.SetBool("Moving", false);
+        can_act = false;
+        rb.linearVelocity = Vector2.zero;
+
+    }
+
+    public void enable_controller()
+    {
+        can_act = true;
     }
 }

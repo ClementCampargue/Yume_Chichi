@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 3775718476348004374}
   - component: {fileID: 1270184702971487512}
   - component: {fileID: 8610197494974737745}
+  - component: {fileID: 8801865696714517502}
   m_Layer: 0
   m_Name: Hand_pivot
   m_TagString: Untagged
@@ -133,10 +134,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f2974c6b7a6e564b85749e542e4f04c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  maxSpeed: 1.5
   returnSpeed: 6
-  detectionDistance: 2
-  attackDuration: 20
+  acceleration: 0.34
+  detectionDistance: 2.79
+  attackDuration: 15
   freezeDuration: 0.5
   objectiveFreezeDuration: 1
   avoidanceDistance: 9.08
@@ -144,7 +146,7 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 8
-  ObjectiveDetectionDistance: 0.76
+  objectiveDetectionDistance: 5
   objectiveTag: Interactive
   grabReleaseMashThreshold: 5
   grabStunDuration: 1
@@ -177,6 +179,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &8801865696714517502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1094533264745217986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034ddb182fc1ec24da6248eebace4737, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time_before_can_act: 1.5
+  trigger_multiple_times: 1
+  target_cam: {fileID: 3775718476348004374}
 --- !u!1 &2885288110316360387
 GameObject:
   m_ObjectHideFlags: 0

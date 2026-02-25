@@ -129,7 +129,7 @@ public class SC_look_effect : MonoBehaviour
         }
         if (targetMaterial2 != null)
         {
-            float heightOffset = rotationValue * heightMultiplier;
+            float heightOffset = rotationValue * heightMultiplier *1.5f;
 
             Vector2 currentOffset = targetMaterial2.GetVector(offsetID2);
             currentOffset.y = heightOffset;

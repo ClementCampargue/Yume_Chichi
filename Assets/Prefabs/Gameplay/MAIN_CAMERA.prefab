@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3563197538120018395}
   - component: {fileID: 2868055087343750127}
+  - component: {fileID: 4230165898979408672}
   - component: {fileID: 3211162528666045814}
   - component: {fileID: 2425656907903640306}
   - component: {fileID: 618588854387348432}
-  - component: {fileID: 4675557552423078546}
   - component: {fileID: 1861300488491992203}
   - component: {fileID: 5294174108379608322}
   m_Layer: 7
@@ -66,9 +66,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.18148148
-    width: 0.16145834
-    height: 0.21527778
+    y: 0
+    width: 1
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
@@ -89,6 +89,26 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &4230165898979408672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7773511930723782750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30c7f5301bc04ac479d1acb6ff62d7f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  offset: {x: 0, y: 0}
+  Horizontal_follow: 1
+  Vertical_follow: 1
+  cutsceneSmoothSpeed: 2
+  minSpeed: 2
+  acceleration: 2
+  maxSpeed: 25
 --- !u!81 &3211162528666045814
 AudioListener:
   m_ObjectHideFlags: 0
@@ -165,22 +185,6 @@ MonoBehaviour:
   m_CropFrameX: 0
   m_CropFrameY: 0
   m_StretchFill: 0
---- !u!114 &4675557552423078546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7773511930723782750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6eac577ac45c554ab5b872a4af8b4ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  offset: {x: 0, y: 0}
-  Horizontal_follow: 1
-  Vertical_follow: 1
 --- !u!61 &1861300488491992203
 BoxCollider2D:
   m_ObjectHideFlags: 0
