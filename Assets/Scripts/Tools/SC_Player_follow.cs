@@ -6,21 +6,29 @@ public class SC_Player_follow : MonoBehaviour
     public Vector2 offset;
     public bool Horizontal_follow = true;
     public bool Vertical_follow = true;
+
+    private Rigidbody2D rb;
+
     void Start()
     {
         target = GameObject.FindWithTag("Player").transform;
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        Vector2 newPosition = rb.position;
+
         if (Horizontal_follow)
         {
-            transform.position = new Vector3(offset.x + target.position.x, transform.position.y, transform.position.z);
+            newPosition.x = target.position.x + offset.x;
         }
+
         if (Vertical_follow)
         {
-            transform.position = new Vector3(transform.position.x, offset.y + target.position.y, transform.position.z);
+            newPosition.y = target.position.y + offset.y;
         }
+
+        rb.MovePosition(newPosition);
     }
 }
