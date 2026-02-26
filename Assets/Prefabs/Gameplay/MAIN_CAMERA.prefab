@@ -66,9 +66,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.18240741
-    width: 0.16145834
-    height: 0.21527778
+    y: 0.14351852
+    width: 0.1890625
+    height: 0.25208333
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
@@ -175,8 +175,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ComponentVersion: 1
   m_AssetsPPU: 100
-  m_RefResolutionX: 640
-  m_RefResolutionY: 480
+  m_RefResolutionX: 720
+  m_RefResolutionY: 540
   m_CropFrame: 4
   m_GridSnapping: 2
   m_FilterMode: 1
@@ -229,7 +229,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 6.41, y: 4.87}
+  m_Size: {x: 7.25, y: 5.45}
   m_EdgeRadius: 0
 --- !u!50 &5294174108379608322
 Rigidbody2D:
