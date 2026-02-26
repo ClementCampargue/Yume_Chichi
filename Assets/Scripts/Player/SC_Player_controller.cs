@@ -85,26 +85,24 @@ public class SC_Player_controller : MonoBehaviour
     void HandleAnimations()
     {
         bool isMoving = input.sqrMagnitude != 0f;
-        if(rb.linearVelocity != Vector2.zero)
-        {
-            animator.SetBool("Moving", true);
-        }
-        else
-        {
-            animator.SetBool("Moving", false);
-        }
-        Debug.Log("move  "+ input.sqrMagnitude);
+        animator.SetBool("Moving", isMoving);
+
         if (!isMoving) return;
 
-        // Direction priority
         if (Mathf.Abs(input.y) > Mathf.Abs(input.x))
         {
+            // Mouvement vertical → reset du flip
             animator.SetBool("Up", input.y > 0);
             animator.SetBool("Down", input.y < 0);
             animator.SetBool("Side", false);
+
+            // Reset flip à la valeur "de base" (par exemple personnage face droite)
+            if (!facing_right)
+                Flip();  // si le personnage n'est pas déjà "face à droite"
         }
         else
         {
+            // Mouvement horizontal → flip possible
             animator.SetBool("Up", false);
             animator.SetBool("Down", false);
             animator.SetBool("Side", true);
@@ -115,7 +113,6 @@ public class SC_Player_controller : MonoBehaviour
                 Flip();
         }
     }
-
     public void Flip()
     {
         facing_right = !facing_right;

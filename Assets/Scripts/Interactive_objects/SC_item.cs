@@ -6,6 +6,7 @@ public class SC_item : MonoBehaviour
     public GameObject visual_to_disable_on_pickup;
     private SC_item_manager sC_Item_Manager;
     public SO_Item item;
+    public int item_amount = 1;
     private bool got;
     void Start()
     {
@@ -23,7 +24,7 @@ public class SC_item : MonoBehaviour
         if (!got)
         {
             visual_to_disable_on_pickup.SetActive(false);
-            sC_Item_Manager.add_item(item);
+            sC_Item_Manager.AddItem(item, item_amount);
 
             got = true;
         }
