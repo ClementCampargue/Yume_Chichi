@@ -199,6 +199,8 @@ public class SC_hand_follow : MonoBehaviour
             isAttacking = false;
             StartFreeze(objectiveFreezeDuration);
             animator.SetTrigger("ReachTarget");
+            if (currentTarget.CompareTag("Player")) return;
+            currentTarget.GetComponent<SC_trigger_anim>().trigger();
         }
     }
 

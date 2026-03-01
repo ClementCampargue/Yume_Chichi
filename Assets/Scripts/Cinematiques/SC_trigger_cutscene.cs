@@ -9,6 +9,8 @@ public class SC_trigger_cutscene : MonoBehaviour
     private bool cutscene_on;
     public bool trigger_multiple_times;
     public Transform target_cam;
+
+    public bool on_collide = false;
     void Start()
     {
         controller = SC_Player_controller.instance;
