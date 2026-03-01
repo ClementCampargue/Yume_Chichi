@@ -13,10 +13,12 @@ public class SC_game_master : MonoBehaviour
     private int framecount;
     public int targetfps =240;
 
+    public static SC_game_master instance;
 
-   [HideInInspector] public string previous_scene;
+    [HideInInspector] public string previous_scene;
     void Awake()
     {
+        instance = this;
         DontDestroyOnLoad(gameObject);
 
         if (debug)

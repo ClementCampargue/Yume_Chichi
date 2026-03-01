@@ -88,9 +88,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20879591c80d2064293fbdbf144beb04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: -0.01
-  amplitude: 0
-  Base_alpha: 1
+  fadeSpeed: 1
+  maxAlpha: 1
+  minAlpha: 0
+  holdTime: 0.5
 --- !u!1 &6612350302764217087
 GameObject:
   m_ObjectHideFlags: 0

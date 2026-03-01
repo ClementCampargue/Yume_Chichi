@@ -82,6 +82,8 @@ MonoBehaviour:
   spawn_point: {fileID: 8953913368500228369}
   current_scene: 
   fade_obj: {fileID: 6612350302764217087, guid: ba84f1c8cd611f34f9940bcb3fb82ce8, type: 3}
+  teleporter: 0
+  teleporter_point: {fileID: 0}
 --- !u!50 &3333013111017516338
 Rigidbody2D:
   serializedVersion: 5
@@ -120,7 +122,7 @@ GameObject:
   - component: {fileID: 8949657693796807240}
   - component: {fileID: 8144904037052853219}
   - component: {fileID: 1364342736684934554}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -7,11 +7,18 @@ public class SC_scene_loader : MonoBehaviour
     public Transform spawn_point;
     [HideInInspector] public string current_scene;
     public GameObject fade_obj;
+    public bool teleporter;
+    public SC_scene_loader teleporter_point;
+    private bool cancollide =true;
+    private SC_Player_controller player;
+    private SC_game_master master;
     void Start()
     {
-        if(GameObject.Find("GAME_MASTER").GetComponent<SC_game_master>().previous_scene == scene_name)
+        player = SC_Player_controller.instance;
+        master = SC_game_master.instance;
+        if (master.previous_scene == scene_name)
         {
-            GameObject.FindGameObjectWithTag("Player").transform.position = spawn_point.position;
+            spawn_player();
         }
         current_scene = SceneManager.GetActiveScene().name;
 
@@ -19,20 +26,42 @@ public class SC_scene_loader : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Player")
+        if(collision.tag == "Player" && cancollide)
         {
             Invoke("delay_load", 1f);
-
-            GameObject.FindGameObjectWithTag("Player").GetComponent<SC_Player_controller>().can_act =false;
+            cancollide = false;
+            player.can_act =false;
             Instantiate(fade_obj);
         }
     }
 
+    public void spawn_player()
+    {
+        Invoke("delay_collide", 1f);
+        cancollide = false;
+        player.transform.position = spawn_point.position;
+        player.can_act = false;
+    }
+
+    void delay_collide()
+    {
+        cancollide = true;
+        player.can_act = true;
+
+    }
+
     void delay_load()
     {
-        GameObject.FindGameObjectWithTag("Player").GetComponent<SC_Player_controller>().can_act = true;
-        GameObject.Find("GAME_MASTER").GetComponent<SC_game_master>().previous_scene = current_scene;
-        SceneManager.LoadScene(scene_name);
+        player.can_act = true;
+        master.previous_scene = current_scene;
+        if (teleporter)
+        {
+            teleporter_point.spawn_player();
+        }
+        else
+        {
+            SceneManager.LoadScene(scene_name);
+        }
 
     }
 }

@@ -3,88 +3,76 @@ using UnityEngine.UI;
 public class SC_Color_anim : MonoBehaviour
 {
     private Image image;
-    private SpriteRenderer _sprite;
-    public float speed = 0.5f;
-    public float amplitude = 0.5f;
-    public float Base_alpha = 0.5f;
+    private SpriteRenderer sprite;
 
-    private bool can_fade = false;
+    public float fadeSpeed = 1f;
+    public float maxAlpha = 1f;
+    public float minAlpha = 0f;
+    public float holdTime = 0.5f; // temps d'attente au max
+
+    private float holdTimer = 0f;
+
+    private enum FadeState { FadingUp, Holding, FadingDown }
+    private FadeState state = FadeState.FadingUp;
 
     private void Start()
     {
-        if (gameObject.GetComponent<Image>() != null)
-        {
-            image = gameObject.GetComponent<Image>();
-        }
-        else if (gameObject.GetComponent<SpriteRenderer>() != null)
-        {
-            _sprite = gameObject.GetComponent<SpriteRenderer>();
-        }
-        Invoke("delay_start", 0.5f);
+        image = GetComponent<Image>();
+        sprite = GetComponent<SpriteRenderer>();
     }
-    public void Update()
+
+    private void Update()
     {
-        if (amplitude == 0)
+        float delta = Time.deltaTime * fadeSpeed;
+
+        Color currentColor = GetCurrentColor();
+
+        switch (state)
         {
-            if (can_fade)
-            {
-                if (speed > 0)
+            case FadeState.FadingUp:
+                currentColor.a += delta;
+                if (currentColor.a >= maxAlpha)
                 {
-                    if (image.color.a > 0f)
-                    {
-                        apply_effect();
-                    }
-                    else
-                    {
-                        Destroy(image);
-                    }
+                    currentColor.a = maxAlpha;
+                    state = FadeState.Holding;
+                    holdTimer = holdTime;
                 }
-                else
+                break;
+
+            case FadeState.Holding:
+                holdTimer -= Time.deltaTime;
+                if (holdTimer <= 0f)
                 {
-                    if (image.color.a < 255)
-                    {
-                        apply_effect();
-                    }
-                    else
-                    {
-                        Destroy(gameObject);
-                    }
+                    state = FadeState.FadingDown;
                 }
-            }
-     
+                break;
+
+            case FadeState.FadingDown:
+                currentColor.a -= delta;
+                if (currentColor.a <= minAlpha)
+                {
+                    currentColor.a = minAlpha;
+                    Destroy(gameObject); // optionnel
+                }
+                break;
         }
+
+        SetColor(currentColor);
+    }
+
+    Color GetCurrentColor()
+    {
+        if (image != null)
+            return image.color;
         else
-        {
-            apply_effect_sin();
-        }
+            return sprite.color;
     }
 
-    void delay_start()
+    void SetColor(Color c)
     {
-        can_fade = true;
+        if (image != null)
+            image.color = c;
+        else
+            sprite.color = c;
     }
-
-    void apply_effect_sin()
-    {
-        if (gameObject.GetComponent<Image>() != null)
-        {
-            image.color = new Color(image.color.r, image.color.g, image.color.b, Base_alpha + Mathf.Sin(Time.time * speed) * amplitude / 2);
-        }
-        else if (gameObject.GetComponent<SpriteRenderer>() != null)
-        {
-            _sprite.color = new Color(_sprite.color.r, _sprite.color.g, _sprite.color.b, Base_alpha + Mathf.Sin(Time.time * speed) * amplitude / 2);
-        }
-    }
-    void apply_effect()
-    {
-        if (gameObject.GetComponent<Image>() != null)
-        {
-            image.color = new Color(image.color.r, image.color.g, image.color.b, image.color.a - Time.time * speed );
-        }
-        else if (gameObject.GetComponent<SpriteRenderer>() != null)
-        {
-            _sprite.color = new Color(_sprite.color.r, _sprite.color.g, _sprite.color.b, _sprite.color.a - Time.time * speed );
-        }
-    }
-
 }
