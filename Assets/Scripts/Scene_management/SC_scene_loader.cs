@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class SC_scene_loader : MonoBehaviour
 {
     public string scene_name;
+    public string teleporter_tag;
     public Transform spawn_point;
     [HideInInspector] public string current_scene;
     public GameObject fade_obj;
@@ -16,12 +17,12 @@ public class SC_scene_loader : MonoBehaviour
     {
         player = SC_Player_controller.instance;
         master = SC_game_master.instance;
-        if (master.previous_scene == scene_name)
+        if (master.previous_scene == scene_name && PlayerPrefs.GetString("Scene_teleport") == teleporter_tag)
         {
             spawn_player();
         }
         current_scene = SceneManager.GetActiveScene().name;
-
+        PlayerPrefs.SetString("Scene_teleport", teleporter_tag);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
