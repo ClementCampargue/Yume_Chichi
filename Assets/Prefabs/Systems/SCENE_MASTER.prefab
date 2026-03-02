@@ -47,7 +47,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Music_and_ambiances:
   - {fileID: 8300000, guid: ac02d399d26ed434c97e93267885ee08, type: 3}
-  - {fileID: 8300000, guid: 2c409732fa72ae0478dc3ddc83027a99, type: 3}
   Camera_zoom: 100
   Camera_target: {fileID: 7023443822496494916}
   Cam_horizontal_movement: 1
