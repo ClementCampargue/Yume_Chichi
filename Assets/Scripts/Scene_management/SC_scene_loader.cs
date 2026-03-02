@@ -22,7 +22,6 @@ public class SC_scene_loader : MonoBehaviour
             spawn_player();
         }
         current_scene = SceneManager.GetActiveScene().name;
-        PlayerPrefs.SetString("Scene_teleport", teleporter_tag);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -61,6 +60,7 @@ public class SC_scene_loader : MonoBehaviour
         }
         else
         {
+            PlayerPrefs.SetString("Scene_teleport", teleporter_tag);
             SceneManager.LoadScene(scene_name);
         }
 
