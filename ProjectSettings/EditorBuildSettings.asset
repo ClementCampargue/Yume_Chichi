@@ -11,6 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Beauty Shot.unity
     guid: 0c82b4e27c5d8fe418f9e79093fc58f8
+  - enabled: 1
+    path: Assets/Scenes/LD_Forest.unity
+    guid: 46090db046afcf940bec03602d5ff27d
+  - enabled: 1
+    path: Assets/Scenes/LD_Corridor.unity
+    guid: b67e6ec46fb268c49b32a2b3b2949f38
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 1763e67c8b8c0344ebade345e71952cc, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
