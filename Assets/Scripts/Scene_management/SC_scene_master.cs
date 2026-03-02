@@ -18,12 +18,17 @@ public class SC_scene_master : MonoBehaviour
     public GameObject vignette_start;
     public GameObject game_master;
     private PixelPerfectCamera cam;
-    void Start()
+
+    private void Awake()
     {
         if (GameObject.Find("Player") == null)
         {
             Instantiate(game_master);
         }
+    }
+    void Start()
+    {
+        
         PlayerPrefs.SetString("Scene" + PlayerPrefs.GetInt("Save"), SceneManager.GetActiveScene().name );
 
         Instantiate(vignette_start);

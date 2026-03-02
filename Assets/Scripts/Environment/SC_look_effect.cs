@@ -53,7 +53,7 @@ public class SC_look_effect : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.Find("Player").transform;
+        player = SC_Player_controller.instance.transform;
         if (player == null)
         {
             Debug.LogError("Player not found!");

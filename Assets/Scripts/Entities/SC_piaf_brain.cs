@@ -35,7 +35,7 @@ public class SC_piaf_brain : MonoBehaviour
     {
         originalScale = transform.localScale;
         startPosition = transform.position;
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = SC_Player_controller.instance.transform;
     }
 
     void Update()
