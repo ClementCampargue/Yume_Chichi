@@ -134,9 +134,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f2974c6b7a6e564b85749e542e4f04c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 1.5
+  maxSpeed: 2
   returnSpeed: 6
-  acceleration: 0.34
+  acceleration: 0.4
   detectionDistance: 2.79
   attackDuration: 15
   freezeDuration: 0.5
@@ -146,7 +146,7 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 8
-  objectiveDetectionDistance: 5
+  objectiveDetectionDistance: 1.5
   objectiveTag: Interactive
   grabReleaseMashThreshold: 5
   grabStunDuration: 1
@@ -194,6 +194,7 @@ MonoBehaviour:
   time_before_can_act: 1.5
   trigger_multiple_times: 1
   target_cam: {fileID: 3775718476348004374}
+  on_collide: 0
 --- !u!1 &2885288110316360387
 GameObject:
   m_ObjectHideFlags: 0

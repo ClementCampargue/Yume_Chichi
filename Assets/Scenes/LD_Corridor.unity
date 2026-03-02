@@ -997,6 +997,10 @@ PrefabInstance:
       propertyPath: Cam_horizontal_movement
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1582504517723301652, guid: c940542539dcde049b215bbde642f4fb, type: 3}
+      propertyPath: 'Music_and_ambiances.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: c3ae0bfd12cc73a44a97307919431954, type: 3}
     - target: {fileID: 1592871608758068812, guid: c940542539dcde049b215bbde642f4fb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -30.063152
