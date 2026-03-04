@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LD_Corridor.unity
     guid: b67e6ec46fb268c49b32a2b3b2949f38
+  - enabled: 1
+    path: Assets/Scenes/LD_Purgatory.unity
+    guid: 8e9dbdfa644cae3419539d82d4b92113
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 1763e67c8b8c0344ebade345e71952cc, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
