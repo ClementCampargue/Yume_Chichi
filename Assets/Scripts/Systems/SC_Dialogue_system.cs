@@ -14,7 +14,6 @@ public class SC_Dialogue_system : MonoBehaviour
     [HideInInspector] public SC_interactive_object interactive;
     [HideInInspector] public TextMeshProUGUI text_component;
     [HideInInspector] public TextMeshProUGUI character_component;
-    [HideInInspector] public Transform camtarget;
     public string[] character_names;
     public string[] lines;
     public List<Sprite> portraits = new List<Sprite>();
@@ -399,7 +398,6 @@ public class SC_Dialogue_system : MonoBehaviour
         index = 0;
 
         player = GameObject.Find("Player").GetComponent<SC_Player_controller>();
-        camtarget = GameObject.Find("Cam_target").GetComponent<Transform>();
 
         if (transform.parent.name.Contains("Dialogue"))
         {
@@ -433,7 +431,6 @@ public class SC_Dialogue_system : MonoBehaviour
         }
         talk_sfx.clip = talk_sound[index];
         character_component.text = character_names[index];
-        camtarget.position = transform.position;
         if (portraits[0].ToString() == "null")
         {
             anim.SetTrigger("no_character_start");
@@ -577,7 +574,6 @@ public class SC_Dialogue_system : MonoBehaviour
         }
         talk_sfx.clip = talk_sound[index];
         character_component.text = character_names[index];
-        camtarget.position = transform.position;
     }
 
 

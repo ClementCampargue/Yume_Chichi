@@ -25,14 +25,14 @@ public class SC_Player_controller : MonoBehaviour
     {
         instance = this;
     }
-    void Start()
-    {
+void Start()
+{
         int save = PlayerPrefs.GetInt("Save");
-        respawnCoordinates = new Vector2(
-            PlayerPrefs.GetFloat("Respawn_x" + save),
-            PlayerPrefs.GetFloat("Respawn_y" + save)
-        );
-    }
+    respawnCoordinates = new Vector2(
+        PlayerPrefs.GetFloat("Respawn_x" + save),
+        PlayerPrefs.GetFloat("Respawn_y" + save)
+    );
+}
 
     void Update()
     {
@@ -70,6 +70,9 @@ public class SC_Player_controller : MonoBehaviour
         {
             velocity.y = Mathf.Sign(input.x) * stairSpeed * moveSpeed;
         }
+
+
+
         if (Input.GetKey(KeyCode.LeftShift))
         {
             rb.linearVelocity = velocity * debug_speed;
